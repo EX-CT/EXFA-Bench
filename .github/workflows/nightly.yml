@@ -144,7 +144,7 @@ jobs:
             const hit = issues.find(i => i.title === title && !i.pull_request);
             if (hit) {
               await github.rest.issues.createComment({owner: context.repo.owner, repo: context.repo.repo, issue_number: hit.number, body});
-              core.info(`commented on #${hit.data.number}`);
+              core.info(`commented on #${hit.number}`);
             } else {
               const r = await github.rest.issues.create({owner: context.repo.owner, repo: context.repo.repo, title, body});
               core.info(`opened #${r.data.number}`);
