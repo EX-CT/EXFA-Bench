@@ -1,0 +1,151 @@
+name: bench-ci
+
+# Push/PR: bench self-tests (no engine, no Pyfa) + the full suite gate against EX-CT/EXFA-Engine main.
+# Nightly (schedule, or workflow_dispatch): the same plus the seeded fuzz self-consistency check
+# (tools/ci_invariants.py). Pyfa itself never runs in CI; the oracle side is the committed expected/ data.
+# On a scheduled failure: opens an issue titled "Nightly bench failure", or comments on the open one.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '0 18 * * *'   # 18:00 UTC = 02:00 CST
+  workflow_dispatch:
+    inputs:
+      engine_ref:
+        description: 'EX-CT/EXFA-Engine ref to build'
+        default: 'main'
+      sde_tag:
+        description: 'EX-CT/eve-sde-pipeline release with dataset-<build>.json.gz (pinned sde-3569502-r5)'
+        default: 'sde-3569502-r5'
+      fuzz_seed:
+        description: 'fuzz seed (default: run number)'
+        default: ''
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: bench-ci-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  ENGINE_REF: ${{ inputs.engine_ref || 'main' }}
+  SDE_TAG: ${{ inputs.sde_tag || 'sde-3569502-r5' }}
+  FUZZ_SEED: ${{ inputs.fuzz_seed || github.run_number }}
+
+jobs:
+  selftest:
+    # Pyfa-free, engine-free: validate the bench's own data and the flattened suite snapshots.
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml
+      - name: Dataset (${{ env.SDE_TAG }})
+        run: |
+          gh release download "$SDE_TAG" -R EX-CT/eve-sde-pipeline --pattern 'dataset-*.json.gz' -D _data
+          echo "EXFA_DATASET=$(ls $PWD/_data/dataset-*.json.gz | head -1)" >> "$GITHUB_ENV"
+      - name: d22 self-test (bench-side validators, no engine)
+        run: python3 d22/run_d22.py --suite all --self-test
+      - name: Graphs corpus + self-test (suites/graphs snapshot)
+        run: |
+          python3 tools/ci_graph_corpus.py suites/graphs/graphs
+          if [ -d suites/graphs/graphs/draft-0.3/cases ]; then python3 tools/ci_graph_corpus.py suites/graphs/graphs/draft-0.3; fi
+          cd suites/graphs && python3 graphs/run_graphs.py --name self-test --self-test \
+            && python3 "$GITHUB_WORKSPACE/tools/ci_gate.py" "graphs corpus self-test" results/graphs-self-test/scorecard.json
+      - name: Oracle drift file (schema + vs dataset)
+        run: python3 -m unittest discover -s oracle/tests -v
+
+  suites:
+    # The gate: build the engine, run every suite, compare with baselines/exfa-engine.json.
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: EX-CT/EXFA-Engine
+          ref: ${{ env.ENGINE_REF }}
+          path: _engine
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: _engine
+      - name: Dataset (${{ env.SDE_TAG }})
+        run: |
+          gh release download "$SDE_TAG" -R EX-CT/eve-sde-pipeline --pattern 'dataset-*.json.gz' -D _data
+          gh release download "$SDE_TAG" -R EX-CT/eve-sde-pipeline --pattern 'presets-pyfa-*.json' -D _data
+          f=$(ls "$PWD"/_data/dataset-*.json.gz | head -1)
+          echo "EXFA_DATASET=$f" >> "$GITHUB_ENV"
+          echo "EXFA_DATASET_R5=$f" >> "$GITHUB_ENV"
+          echo "EXFA_PYFA_DATA=$(ls $PWD/_data/presets-pyfa-*.json | head -1)" >> "$GITHUB_ENV"
+      - name: Build exfa (${{ env.ENGINE_REF }})
+        working-directory: _engine
+        run: |
+          cargo build --release --locked -p exfa-cli
+          echo "ENGINE=$PWD/target/release/exfa" >> "$GITHUB_ENV"
+          echo "### EXFA-Engine \`$ENGINE_REF\` @ $(git rev-parse --short HEAD)" >> "$GITHUB_STEP_SUMMARY"
+      - name: All suites
+        id: suites
+        run: tools/run_all_suites.sh "$ENGINE" out ci
+      - name: No-regression gate (baselines/exfa-engine.json)
+        id: noreg
+        run: python3 tools/check_no_regress.py --baseline baselines/exfa-engine.json --run-dir out
+      - name: Round-1 hash
+        run: |
+          sha=$(tools/round1_sha.sh "$ENGINE")
+          echo "round-1 batch sha256 $sha (engine ci/round1.sha256 has $sha when output is unchanged)"
+      - name: Inventory check (docs/19 -> tests; non-blocking)
+        continue-on-error: true
+        run: |
+          gh repo clone EX-CT/eve-fit-docs _inv -- --depth 1 -q
+          python3 tools/check_inventory.py --inventory _inv/docs/19-pyfa-feature-inventory.yaml \
+            --columns f --root unit=_engine --root formats-rust=_engine
+      - name: Fuzz self-consistency (no Pyfa)
+        id: fuzz
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: python3 tools/ci_invariants.py --batch-cmd "$ENGINE batch" --cmd "$ENGINE calc" --n 400 --seed "$FUZZ_SEED"
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bench-results
+          path: |
+            out/
+            ci-invariants.json
+          if-no-files-found: ignore
+      - name: Open or update the failure issue
+        if: failure() && (github.event_name == 'schedule' || github.ref == 'refs/heads/main')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = 'Nightly bench failure';
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const steps = ['suites', 'noreg', 'fuzz'];
+            const body = [`Nightly run failed: ${run}`, '', `EXFA-Engine ref: \`${process.env.ENGINE_REF}\`, dataset: \`${process.env.SDE_TAG}\`, fuzz seed: ${process.env.FUZZ_SEED}`,
+              '', 'See the run summary and the `bench-results` artifact (scorecards, failures.json, ci-invariants.json).'].join('\n');
+            const issues = await github.paginate(github.rest.issues.listForRepo, {owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100});
+            const hit = issues.find(i => i.title === title && !i.pull_request);
+            if (hit) {
+              await github.rest.issues.createComment({owner: context.repo.owner, repo: context.repo.repo, issue_number: hit.number, body});
+              core.info(`commented on #${hit.data.number}`);
+            } else {
+              const r = await github.rest.issues.create({owner: context.repo.owner, repo: context.repo.repo, title, body});
+              core.info(`opened #${r.data.number}`);
+            }

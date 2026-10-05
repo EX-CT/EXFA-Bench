@@ -1,0 +1,10 @@
+results/
+/data/
+__pycache__/
+*.pyc
+work/
+ci-invariants.json
+out/
+_data/
+_engine/
+_inv/

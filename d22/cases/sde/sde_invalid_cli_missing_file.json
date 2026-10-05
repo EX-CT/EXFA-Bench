@@ -1,0 +1,6 @@
+{
+ "check": "sde_invalid_cli",
+ "note": "--sde with a path that does not exist -> SDE_LOAD_FAILED reason not_found, no fallback",
+ "pack": "d22/data/packs/does-not-exist.edp",
+ "reason": "not_found"
+}

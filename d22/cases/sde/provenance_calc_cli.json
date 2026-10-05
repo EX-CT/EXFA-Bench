@@ -1,0 +1,12 @@
+{
+ "check": "provenance_calc",
+ "fits": [
+  "exct_rifter",
+  "aoe_web_paint_rifter",
+  "drones_sentry_dominix",
+  "booster_strongblue",
+  "dmgpattern_rah_hyperion"
+ ],
+ "note": "cli calc: provenance {sde_build, sde_hash, price_source, snapshot_time}; sde_build / sde_hash = version's; price_source snapshot or none without price inputs",
+ "transport": "cli"
+}

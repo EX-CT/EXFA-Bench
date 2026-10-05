@@ -1,0 +1,833 @@
+{
+ "calcprice_embedded_snapshot": {
+  "fits": 1,
+  "kind": "calc_price_embedded",
+  "note": "options.price, no price inputs: lines priced from the embedded snapshot carry source/layer snapshot and snapshot_time == provenance.price_time (structural; values unknown)",
+  "ops": []
+ },
+ "calcprice_file_map": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-map.json"
+  ],
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "calc --prices map",
+  "ops": []
+ },
+ "calcprice_file_snapshot": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "calc --prices snapshot + an override",
+  "ops": []
+ },
+ "calcprice_overrides": {
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "calc with prices + price_overrides",
+  "ops": []
+ },
+ "calcprice_request_over_file": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "request > file",
+  "ops": []
+ },
+ "calcprice_request_table": {
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "calc with prices.isk: the price block",
+  "ops": []
+ },
+ "calcprice_use_snapshot_false": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "calc_price",
+  "note": "use_snapshot false ignores the file",
+  "ops": []
+ },
+ "gap_bad_override_both_values": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: price and multiplier",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_duplicate": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: duplicate target in one list",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_in_variant": {
+  "fits": 2,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE inside one variant fails the whole batch",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_negative": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: negative price",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_negative_mult": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: negative multiplier",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_no_target": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: no target",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_no_value": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: neither price nor multiplier",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_string": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: non-number price",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_bad_override_two_targets": {
+  "fits": 1,
+  "kind": "gap_error",
+  "note": "BAD_PRICE_OVERRIDE: two targets in one entry",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_delta_ref": {
+  "fits": 5,
+  "kind": "gap",
+  "note": "form 1 delta_ref: deltas against the fit with id s3; no base block",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "gap_delta_ref_pct_filter": {
+  "fits": 5,
+  "kind": "gap",
+  "note": "delta_ref + filter on delta_pct",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "gap_filter_in": {
+  "fits": 5,
+  "kind": "gap",
+  "note": "filter op in (bool list) + not_null; booleans never equal 1/0",
+  "ops": [
+   "fields",
+   "filter"
+  ]
+ },
+ "gap_filter_in_numbers": {
+  "fits": 5,
+  "kind": "gap",
+  "note": "not_null on delta: every fit has a delta against s5 (incl. s5 itself, delta 0)",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "gap_filter_not_null_drops": {
+  "fits": 6,
+  "kind": "gap",
+  "note": "not_null drops fits where the field is null/absent",
+  "ops": [
+   "fields",
+   "filter"
+  ]
+ },
+ "gap_prices_file_map": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-map.json"
+  ],
+  "fits": 2,
+  "kind": "gap",
+  "note": "--prices plain map = L4 source injected; one rig unpriced -> missing",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_prices_file_snapshot": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 3,
+  "kind": "gap",
+  "note": "--prices eve-price-snapshot v1: source injected, snapshot_time = market_time; overrides stack over it",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "gap_prices_request_over_file": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "gap",
+  "note": "request prices.isk beats the --prices file per type; others still from the file",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_product_sweep_axis": {
+  "fits": 9,
+  "kind": "gap",
+  "note": "product of two numeric sweep axes",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "gap_swap_type": {
+  "fits": 4,
+  "kind": "gap",
+  "note": "swap_type replaces every module with type from; no match = unchanged fit",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "gap_sweep_float": {
+  "fits": 9,
+  "kind": "gap",
+  "note": "float sweep 0..100 step 12.5 (9 values, labels path=value)",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "gap_sweep_float_inexact": {
+  "fits": 3,
+  "kind": "gap",
+  "note": "float sweep with an inexact step: 0.1, 0.4, 0.7 (from + k*step; to inclusive)",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_sweep_int": {
+  "fits": 3,
+  "kind": "gap",
+  "note": "int sweep 1,3,5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "gap_too_large_ceiling": {
+  "fits": 200001,
+  "kind": "gap_error",
+  "note": "200001 > ceiling 100000 even with max_combinations 1e6 -> limit 100000",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_too_large_default": {
+  "fits": 2406,
+  "kind": "gap_error",
+  "note": "6 x 401 = 2406 > default 2000 -> BATCH_TOO_LARGE {count 2406, limit 2000}",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_too_large_lowered": {
+  "fits": 6,
+  "kind": "gap_error",
+  "note": "6 fits > max_combinations 5 -> BATCH_TOO_LARGE {6, 5}",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_use_snapshot_false": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-jita44-20261003T060000Z.json"
+  ],
+  "fits": 1,
+  "kind": "gap",
+  "note": "use_snapshot false disables L4 (the file): only 2889 priced, the rest missing",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_use_snapshot_false_fit": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-map.json"
+  ],
+  "fits": 2,
+  "kind": "gap",
+  "note": "a FitRequest's own use_snapshot false only affects that fit",
+  "ops": [
+   "fields"
+  ]
+ },
+ "gap_variant_own_price_table": {
+  "engine_args": [
+   "--prices",
+   "batch/data/prices-map.json"
+  ],
+  "fits": 3,
+  "kind": "gap",
+  "note": "variants with their own price table carry their own provenance (price_source request / none) under a top-level file",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_100_full": {
+  "fits": 100,
+  "kind": "multi",
+  "note": "100 fits, full FitStats",
+  "ops": []
+ },
+ "multi_10_fields": {
+  "fits": 10,
+  "kind": "multi",
+  "note": "10 fits, projection",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_25_fields": {
+  "fits": 25,
+  "kind": "multi",
+  "note": "25 fits, projection",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_5_full": {
+  "fits": 5,
+  "kind": "multi",
+  "note": "5 fits, full FitStats",
+  "ops": []
+ },
+ "multi_all_core": {
+  "fits": 339,
+  "kind": "multi",
+  "note": "all core fits, projection",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_duplicates": {
+  "fits": 9,
+  "kind": "multi",
+  "note": "same fits repeated: identical results, order kept",
+  "ops": []
+ },
+ "multi_error_in_place": {
+  "fits": 8,
+  "kind": "multi",
+  "note": "an unknown ship type errors in place (error code as one-by-one), neighbours unaffected",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_ext_mix": {
+  "fits": 30,
+  "kind": "multi",
+  "note": "20 ext + 10 core fits",
+  "ops": [
+   "fields"
+  ]
+ },
+ "multi_filter_fast": {
+  "fits": 60,
+  "kind": "multi",
+  "note": "filter on a field",
+  "ops": [
+   "fields",
+   "filter"
+  ]
+ },
+ "multi_filter_sort_2key": {
+  "fits": 80,
+  "kind": "multi",
+  "note": "two filters (AND) + two sort keys (bool desc, then ehp asc)",
+  "ops": [
+   "fields",
+   "filter",
+   "sort_by"
+  ]
+ },
+ "multi_single": {
+  "fits": 1,
+  "kind": "multi",
+  "note": "one fit, full FitStats",
+  "ops": []
+ },
+ "multi_sort_dps_top10": {
+  "fits": 60,
+  "kind": "multi",
+  "note": "sort desc + limit",
+  "ops": [
+   "fields",
+   "sort_by",
+   "top_n"
+  ]
+ },
+ "price_chain_variant_over_request": {
+  "fits": 3,
+  "kind": "price",
+  "note": "L1 x0.9 over L2 x0.5 over injected (stacked 0.45); fixed L1 stops the chain; deltas on price",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "price_fit_level_overrides": {
+  "fits": 1,
+  "kind": "price",
+  "note": "the FitRequest's own price_overrides are layer L2 (request)",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_fits_entries": {
+  "fits": 3,
+  "kind": "price",
+  "note": "form 1 entries with their own L1 overrides over a batch-wide L2",
+  "ops": [
+   "fields",
+   "sort_by"
+  ]
+ },
+ "price_injected_complete": {
+  "fits": 1,
+  "kind": "price",
+  "note": "injected table prices every item: sources injected, complete, sections sum to total",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_market_group_children": {
+  "fits": 1,
+  "kind": "price",
+  "note": "market group 9 (Ship Equipment) matches modules in child market groups (deepest-first walk)",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_market_group_deepest": {
+  "fits": 1,
+  "kind": "price",
+  "note": "parent vs child market groups: the deepest matching group wins",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_missing_list": {
+  "fits": 1,
+  "kind": "price",
+  "note": "3 types unpriced -> missing (no_price) with section/index/quantity; not in totals",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_multiplier_without_base": {
+  "fits": 1,
+  "kind": "price",
+  "note": "multiplier over an unpriced type -> missing reason multiplier_without_base",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_product_options": {
+  "fits": 6,
+  "kind": "price",
+  "note": "axis options carry overrides (concatenated in axis order = one L1 layer)",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "price_specificity_order": {
+  "fits": 1,
+  "kind": "price",
+  "note": "type > market group > group > category within one layer (2889 -> mg 574; 448 -> type; 527 -> category)",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_type_beats_injected": {
+  "fits": 1,
+  "kind": "price",
+  "note": "request type override beats injected",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_variant_fixed_beats_request_fixed": {
+  "fits": 2,
+  "kind": "price",
+  "note": "variant layer beats request layer even when less specific",
+  "ops": [
+   "fields"
+  ]
+ },
+ "price_variants_sort_filter": {
+  "fits": 6,
+  "kind": "price",
+  "note": "variants with their own overrides; filter + sort by price.total_isk; a patched variant with a type missing from the injected table",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter",
+   "sort_by"
+  ]
+ },
+ "price_zero_self_made": {
+  "fits": 1,
+  "kind": "price",
+  "note": "price 0 (self-made): line kept with 0 ISK",
+  "ops": [
+   "fields"
+  ]
+ },
+ "product_full_output": {
+  "fits": 4,
+  "kind": "product",
+  "note": "small product, full FitStats",
+  "ops": []
+ },
+ "product_skill_charge_state_0": {
+  "fits": 12,
+  "kind": "product",
+  "note": "esf_buzzard: skills \u00d7 charge \u00d7 state",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "product_skill_charge_state_1": {
+  "fits": 24,
+  "kind": "product",
+  "note": "exct_svipul: skills \u00d7 charge \u00d7 state",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by",
+   "top_n"
+  ]
+ },
+ "product_skill_charge_state_2": {
+  "fits": 12,
+  "kind": "product",
+  "note": "esf_projection: skills \u00d7 charge \u00d7 state",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "product_skill_charge_state_3": {
+  "fits": 12,
+  "kind": "product",
+  "note": "exct_raven: skills \u00d7 charge \u00d7 state",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by",
+   "top_n"
+  ]
+ },
+ "product_states_dp_0": {
+  "fits": 32,
+  "kind": "product",
+  "note": "esf_caracal: 4 states \u00d7 4 states \u00d7 2 damage patterns",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "product_states_dp_1": {
+  "fits": 32,
+  "kind": "product",
+  "note": "exct_svipul: 4 states \u00d7 4 states \u00d7 2 damage patterns",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "product_states_dp_2": {
+  "fits": 32,
+  "kind": "product",
+  "note": "exct_apocalypse_navy: 4 states \u00d7 4 states \u00d7 2 damage patterns",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "product_states_dp_3": {
+  "fits": 32,
+  "kind": "product",
+  "note": "exct_damnation: 4 states \u00d7 4 states \u00d7 2 damage patterns",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "sweep_charge_0": {
+  "fits": 2,
+  "kind": "sweep",
+  "note": "exct_vargur: module 9 charge sweep, top 3 volley",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by",
+   "top_n"
+  ]
+ },
+ "sweep_charge_1": {
+  "fits": 2,
+  "kind": "sweep",
+  "note": "exct_hyperion: module 11 charge sweep, top 3 volley",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by",
+   "top_n"
+  ]
+ },
+ "sweep_damage_pattern": {
+  "fits": 5,
+  "kind": "sweep",
+  "note": "damage pattern sweep",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "sweep_skill_override_full": {
+  "fits": 3,
+  "kind": "sweep",
+  "note": "per-skill override sweep (Gunnery 3300), full FitStats",
+  "ops": []
+ },
+ "sweep_skills_0": {
+  "fits": 6,
+  "kind": "sweep",
+  "note": "skills4_maelstrom: default skill level 0..5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "sweep_skills_1": {
+  "fits": 6,
+  "kind": "sweep",
+  "note": "exct_scythe_rtc: default skill level 0..5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "sweep_skills_2": {
+  "fits": 6,
+  "kind": "sweep",
+  "note": "exct_nidhoggur: default skill level 0..5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "sweep_skills_3": {
+  "fits": 6,
+  "kind": "sweep",
+  "note": "aoe_damp_track_cerberus: default skill level 0..5",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "sweep_state_0": {
+  "fits": 4,
+  "kind": "sweep",
+  "note": "esf_vexor: module 9 state sweep, sorted by cap stable (false first) then cpu desc",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "sweep_state_1": {
+  "fits": 4,
+  "kind": "sweep",
+  "note": "exct_hyperion: module 0 state sweep, sorted by cap stable (false first) then cpu desc",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "sweep_state_2": {
+  "fits": 4,
+  "kind": "sweep",
+  "note": "exct_sabre: module 1 state sweep, sorted by cap stable (false first) then cpu desc",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "variants_charges_0": {
+  "fits": 2,
+  "kind": "variants",
+  "note": "esf_omen_t2: every corpus charge of module 9, sorted by dps delta",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "variants_charges_1": {
+  "fits": 1,
+  "kind": "variants",
+  "note": "exct_nightmare: every corpus charge of module 7, sorted by dps delta",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "variants_charges_2": {
+  "fits": 1,
+  "kind": "variants",
+  "note": "exct_kronos: every corpus charge of module 10, sorted by dps delta",
+  "ops": [
+   "fields",
+   "deltas",
+   "sort_by"
+  ]
+ },
+ "variants_damage_pattern": {
+  "fits": 5,
+  "kind": "variants",
+  "note": "damage patterns change ehp only",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_full_output": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "no projection: full FitStats per variant",
+  "ops": []
+ },
+ "variants_states_0": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_harbinger: every other state of 2 modules, deltas vs base",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_states_1": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_svipul: every other state of 2 modules, deltas vs base",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_states_2": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "esf_nosferatu_income_1: every other state of 2 modules, deltas vs base",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_states_3": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_dominix: every other state of 2 modules, deltas vs base",
+  "ops": [
+   "fields",
+   "deltas"
+  ]
+ },
+ "variants_struct_0": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_naga: remove / duplicate modules, skill levels; keep only variants whose ehp changed",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "variants_struct_1": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_broadsword_bubble: remove / duplicate modules, skill levels; keep only variants whose ehp changed",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ },
+ "variants_struct_2": {
+  "fits": 6,
+  "kind": "variants",
+  "note": "exct_nidhoggur: remove / duplicate modules, skill levels; keep only variants whose ehp changed",
+  "ops": [
+   "fields",
+   "deltas",
+   "filter"
+  ]
+ }
+}

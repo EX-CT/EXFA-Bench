@@ -1,0 +1,947 @@
+{
+ "alpha_drake": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "alpha_kestrel": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "alpha_omen_skills4": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "alpha_rifter": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "alpha_vexor_drones": {
+  "feature": "alpha_clone",
+  "item": "ENG-CORE-009",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_basilisk": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_dominix": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_dominix_red_giant6": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_hulk": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_ishtar": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_ishtar_shieldext": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_purifier": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_rifter": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_rifter_red_giant3": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_rorqual": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "bomb_vexor": {
+  "feature": "bombing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "brdc_rifter_active": {
+  "feature": "breacher_dc",
+  "item": "ENG-MISC-004",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "brdc_rifter_online": {
+  "feature": "breacher_dc",
+  "item": "ENG-MISC-004",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "brdc_rifter_skills0": {
+  "feature": "breacher_dc",
+  "item": "ENG-MISC-004",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "brdc_thorax_active": {
+  "feature": "breacher_dc",
+  "item": "ENG-MISC-004",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_kestrel_char_missiles": {
+  "feature": "char_implants",
+  "item": "CHR-006",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_punisher_char_cap": {
+  "feature": "char_implants",
+  "item": "CHR-006",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_rifter_char_ignores_fit": {
+  "feature": "char_implants",
+  "item": "CHR-006",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_rifter_char_source": {
+  "feature": "char_implants",
+  "item": "ENG-IMP-002",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_rifter_default_fit": {
+  "feature": "char_implants",
+  "item": "ENG-IMP-002",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "cimp_rifter_fit_source": {
+  "feature": "char_implants",
+  "item": "ENG-IMP-002",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dehp_dominix_mixed": {
+  "feature": "drone_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dehp_dominix_ogre_enhancer": {
+  "feature": "drone_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dehp_ishtar_hammerhead_explosive": {
+  "feature": "drone_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dehp_vexor_hobgoblin": {
+  "feature": "drone_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dehp_vexor_hobgoblin_skills0": {
+  "feature": "drone_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dep_kestrel_bcs_skills0": {
+  "feature": "attr_dependants",
+  "item": "ENG-CORE-008",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dep_rifter_ab_gyro": {
+  "feature": "attr_dependants",
+  "item": "ENG-CORE-008",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dep_thorax_plate_dc": {
+  "feature": "attr_dependants",
+  "item": "ENG-CORE-008",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dep_vexor_drones_dda": {
+  "feature": "attr_dependants",
+  "item": "ENG-CORE-008",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_drake_abyssal_drifter": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_drake_guristas": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_rifter_generic_em": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_rifter_generic_explosive": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_thorax_scourge": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "dpb_thorax_uniform": {
+  "feature": "damage_pattern_builtin",
+  "item": "PRF-DMG-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_aeon_ametat_templar": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_archon_em_thermal_pattern": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_archon_templar_cenobite": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_chimera_dragonfly_scarab": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_chimera_inactive_squadron": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_hel_fsu3_mantis": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_hel_mantis_einherji": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_nidhoggur_einherji_siren": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_nyx_explosive_pattern": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_nyx_malleus_firbolg": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_thanatos_firbolg": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_thanatos_fsu2": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_thanatos_skills0": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_thanatos_skills_fighters1": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fehp_wyvern_cyclops_dromi": {
+  "feature": "fighter_ehp",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_booster_claymore_only": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_armor_all": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_drones": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_info": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_max_aggregate_dup": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_min_aggregate_dup": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_override_booster_claymore": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_shield_all": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_shield_resist": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_skills0": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_skirmish": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "fleet_buffs_titan_generators": {
+  "feature": "fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_covetor_strip_i": {
+  "feature": "mining",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_hulk_fleet_buffs": {
+  "feature": "mining+fleet.buffs",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_hulk_skills4": {
+  "feature": "mining",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_hulk_strip": {
+  "feature": "mining",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_porpoise_drones": {
+  "feature": "mining",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_porpoise_ice_drones": {
+  "feature": "mining",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_procurer_ice": {
+  "feature": "mining",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_venture": {
+  "feature": "mining",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_venture_gas": {
+  "feature": "mining",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "mining_venture_skills0": {
+  "feature": "mining",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "ovr_booster": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_booster_fit_charge": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_charge_damage_volley": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_drone_damage": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_drone_hp": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_duplicate_last_wins": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_environment": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_fighter": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_implant": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_module_cpu_power": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_module_resist_stacking": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_module_shield_extender_x2": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_mutated_other_attr": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_mutated_rolled_attr": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_projected_fit_global": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_projected_module": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_rifter_shield_skills0": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_rifter_shield_skills5": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_rifter_velocity_skills0": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_rifter_velocity_skills5": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_ship_armor_plate_skills5": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "ovr_t3d_mode": {
+  "feature": "overrides",
+  "source": "Pyfa oracle (attribute overrides)"
+ },
+ "pool_bombing_fsweep00000": {
+  "feature": "bombing",
+  "source": "random legal fit fsweep00000.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_bombing_fsweep06421": {
+  "feature": "bombing",
+  "source": "random legal fit fsweep06421.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_bombing_fsweep17389": {
+  "feature": "bombing",
+  "source": "random legal fit fsweep17389.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_bombing_fsweep17392": {
+  "feature": "bombing",
+  "source": "random legal fit fsweep17392.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep06267": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep06267.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep17345": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep17345.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep17360": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep17360.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep17361": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep17361.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep17362": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep17362.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep17363": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep17363.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep17375": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep17375.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep17376": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep17376.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep17379": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep17379.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_drone_ehp_fsweep17380": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep17380.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_fighter_ehp_fsweep06420": {
+  "feature": "drone_ehp",
+  "source": "random legal fit fsweep06420.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep11325": {
+  "feature": "heat",
+  "source": "random legal fit fsweep11325.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17714": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17714.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17748": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17748.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17750": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17750.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17751": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17751.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17752": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17752.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17753": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17753.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17755": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17755.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17756": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17756.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17759": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17759.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17760": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17760.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17761": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17761.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17762": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17762.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17765": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17765.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17768": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17768.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17783": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17783.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17784": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17784.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17785": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17785.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17786": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17786.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17798": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17798.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17799": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17799.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17802": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17802.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17803": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17803.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17812": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17812.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17815": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17815.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17827": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17827.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17828": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17828.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17841": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17841.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17842": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17842.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_heat_fsweep17843": {
+  "feature": "heat",
+  "source": "random legal fit fsweep17843.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_mining_drones_fsweep06266": {
+  "feature": "mining",
+  "source": "random legal fit fsweep06266.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_mining_fsweep00106": {
+  "feature": "mining",
+  "source": "random legal fit fsweep00106.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_drones_fsweep06283": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep06283.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep00075": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep00075.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17291": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17291.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17325": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17325.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17327": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17327.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17328": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17328.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17329": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17329.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17330": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17330.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17332": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17332.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17333": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17333.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17336": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17336.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17337": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17337.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17338": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17338.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17339": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17339.json (gen_legal pool; Pyfa oracle)"
+ },
+ "pool_outgoing_fsweep17342": {
+  "feature": "outgoing",
+  "source": "random legal fit fsweep17342.json (gen_legal pool; Pyfa oracle)"
+ },
+ "probe_dominix": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_hel": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_heron": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_heron_sensor_booster": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_ibis": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_rifter": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_rifter_mwd": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_rifter_skills0": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_thanatos": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "probe_vexor": {
+  "feature": "probe_size",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_basilisk": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_dominix_heavy_bots": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_dominix_shield_bots": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_guardian": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_guardian_skills0": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_oneiros": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_scimitar": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_vexor_light_bots": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_zarmazd_spool": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "rr_zarmazd_spool_full": {
+  "feature": "outgoing",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_drake_implants": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_kestrel_bcs_skills0": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_punisher_stacking": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_rifter_ab_gyro": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_thorax_plate_dc": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "src_vexor_drones_dda": {
+  "feature": "attr_sources",
+  "item": "ENG-CORE-007",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_kestrel_missiles_kinetic": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_armor_t2": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_frigate_t1": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_immune_em": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_shield_t2": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_ac_uniform0": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_no_weapons": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_rifter_skills0": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_thanatos_fighters": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_vexor_drones": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tp_vexor_guns_drones": {
+  "feature": "vs_target_profile",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_kestrel_serpentis": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_kestrel_t1_shield": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_punisher_sleeper": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_rifter_t2_amarr_armor": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_rifter_uniform50": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "tpb_vexor_rogue_drones": {
+  "feature": "vs_target_profile_builtin",
+  "item": "PRF-TGT-001",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_capital_module_subcap": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_charge_capacity": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_charge_capacity_probe": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_charge_group": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_charge_size": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_clean_rifter": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_cpu_power_overload": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_disable_restrictions_stats": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_drone_bandwidth": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_launcher_hardpoints": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_max_group_active": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_max_group_fitted": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_max_group_online_bursts": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_missing_skills_all0": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_missing_skills_drone_implant": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_missing_skills_partial": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_missing_skills_rig_only": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_rig_size": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_ship_restriction_burst": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_slots_high": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_slots_mid_low_rig": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ },
+ "val_turret_hardpoints": {
+  "feature": "validity",
+  "source": "hand-built (Pyfa oracle)"
+ }
+}
