@@ -1,8 +1,8 @@
 {
  "schema": "no-regress/1",
- "note": "raised to EX-CT/eve-dogma 8bde0ba (CI green) on bench 4783eab: batch 93/93, sde 18/18, price_inject 32/32 (pending SDE_PACK cases unscored); docs/19 at eve-fit-docs b4c3627",
+ "note": "raised to EX-CT/EXFA-Engine@f3310de (ext 239/239, ext_rpc 45/54 incl. pyfa presets)",
  "created": "2026-10-03T14:07:47+0800",
- "updated": "2026-10-03T15:22:05+0800",
+ "updated": "2026-10-06T01:29:28+0800",
  "suites": {
   "core": {
    "passed": 339,
@@ -348,12 +348,17 @@
     "weather_infernal_hyperion",
     "weather_xenon_cerberus"
    ],
-   "ref": "4783eabfbf4bad1623b8ba92358dc35f42a5eada"
+   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
   },
   "ext": {
-   "passed": 208,
+   "passed": 239,
    "total": 239,
    "passed_ids": [
+    "alpha_drake",
+    "alpha_kestrel",
+    "alpha_omen_skills4",
+    "alpha_rifter",
+    "alpha_vexor_drones",
     "bomb_basilisk",
     "bomb_dominix",
     "bomb_dominix_red_giant6",
@@ -369,6 +374,10 @@
     "brdc_rifter_online",
     "brdc_rifter_skills0",
     "brdc_thorax_active",
+    "cimp_kestrel_char_missiles",
+    "cimp_punisher_char_cap",
+    "cimp_rifter_char_ignores_fit",
+    "cimp_rifter_char_source",
     "cimp_rifter_default_fit",
     "cimp_rifter_fit_source",
     "dehp_dominix_mixed",
@@ -376,6 +385,16 @@
     "dehp_ishtar_hammerhead_explosive",
     "dehp_vexor_hobgoblin",
     "dehp_vexor_hobgoblin_skills0",
+    "dep_kestrel_bcs_skills0",
+    "dep_rifter_ab_gyro",
+    "dep_thorax_plate_dc",
+    "dep_vexor_drones_dda",
+    "dpb_drake_abyssal_drifter",
+    "dpb_drake_guristas",
+    "dpb_rifter_generic_em",
+    "dpb_rifter_generic_explosive",
+    "dpb_thorax_scourge",
+    "dpb_thorax_uniform",
     "fehp_aeon_ametat_templar",
     "fehp_archon_em_thermal_pattern",
     "fehp_archon_templar_cenobite",
@@ -517,6 +536,12 @@
     "rr_vexor_light_bots",
     "rr_zarmazd_spool",
     "rr_zarmazd_spool_full",
+    "src_drake_implants",
+    "src_kestrel_bcs_skills0",
+    "src_punisher_stacking",
+    "src_rifter_ab_gyro",
+    "src_thorax_plate_dc",
+    "src_vexor_drones_dda",
     "tp_kestrel_missiles_kinetic",
     "tp_rifter_ac_armor_t2",
     "tp_rifter_ac_frigate_t1",
@@ -528,6 +553,12 @@
     "tp_thanatos_fighters",
     "tp_vexor_drones",
     "tp_vexor_guns_drones",
+    "tpb_kestrel_serpentis",
+    "tpb_kestrel_t1_shield",
+    "tpb_punisher_sleeper",
+    "tpb_rifter_t2_amarr_armor",
+    "tpb_rifter_uniform50",
+    "tpb_vexor_rogue_drones",
     "unit_ovr_attr_not_on_type",
     "unit_ovr_charge_damage_volley",
     "unit_ovr_module_shield_extender_x2",
@@ -563,13 +594,59 @@
     "val_slots_mid_low_rig",
     "val_turret_hardpoints"
    ],
-   "ref": "4783eabfbf4bad1623b8ba92358dc35f42a5eada"
+   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
   },
   "ext_rpc": {
-   "passed": 0,
+   "passed": 45,
    "total": 54,
-   "passed_ids": [],
-   "ref": "4783eabfbf4bad1623b8ba92358dc35f42a5eada"
+   "passed_ids": [
+    "backup_one",
+    "backup_three",
+    "cmp_1mn_afterburner_ii",
+    "cmp_damage_control_ii",
+    "cmp_heat_sink_ii",
+    "cmp_large_shield_extender_ii",
+    "evemon_bad_root",
+    "evemon_ccp",
+    "evemon_filtered",
+    "evemon_uri",
+    "isets_all",
+    "mkt_group_1mn_afterburner_ii",
+    "mkt_group_damage_control_ii",
+    "mkt_group_hammerhead_ii",
+    "mkt_root",
+    "srch_dc_t2",
+    "srch_dda",
+    "srch_lse",
+    "srch_mwd",
+    "srch_plain",
+    "srch_regex",
+    "srch_wildcard",
+    "type_attr_damage_control_ii",
+    "type_attr_hammerhead_ii",
+    "type_attr_ishtar",
+    "type_attr_large_shield_extender_ii",
+    "type_attr_rifter",
+    "type_attr_svipul",
+    "type_reqskills_damage_control_ii",
+    "type_reqskills_hammerhead_ii",
+    "type_reqskills_ishtar",
+    "type_reqskills_large_shield_extender_ii",
+    "type_reqskills_rifter",
+    "type_reqskills_svipul",
+    "type_traits_ishtar",
+    "type_traits_nyx",
+    "type_traits_rifter",
+    "type_traits_svipul",
+    "type_traits_tengu",
+    "var_200mm_autocannon_ii",
+    "var_damage_control_ii",
+    "var_hammerhead_ii",
+    "var_high_grade_snake_alpha",
+    "var_large_shield_extender_ii",
+    "var_medium_armor_repairer_i"
+   ],
+   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
   },
   "effects": {
    "passed": 2378,
@@ -2954,7 +3031,7 @@
     "eff_998_eliteBonusGunshipProjectileFalloff2",
     "eff_999_eliteBonusGunshipShieldBoost2"
    ],
-   "ref": "4783eabfbf4bad1623b8ba92358dc35f42a5eada"
+   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
   },
   "graphs": {
    "passed": 192,
@@ -3516,7 +3593,7 @@
     "variants_struct_1",
     "variants_struct_2"
    ],
-   "ref": "4783eabfbf4bad1623b8ba92358dc35f42a5eada"
+   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
   },
   "sde": {
    "passed": 18,
@@ -3541,7 +3618,7 @@
     "version_rpc_equals_cli",
     "version_rpc_fields"
    ],
-   "ref": "4783eabfbf4bad1623b8ba92358dc35f42a5eada"
+   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
   },
   "price_inject": {
    "passed": 32,
@@ -3580,7 +3657,7 @@
     "rpc_request_over_session",
     "rpc_session_isolated"
    ],
-   "ref": "4783eabfbf4bad1623b8ba92358dc35f42a5eada"
+   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
   }
  },
  "inventory": {
