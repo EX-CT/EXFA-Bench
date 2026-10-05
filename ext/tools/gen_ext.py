@@ -11,7 +11,7 @@ Pyfa expectations for the rest: ext/tools/make_expected.py."""
 import copy, gzip, json, os, pathlib, sys
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SUITE = ROOT / "ext"
-D = json.load(gzip.open(os.environ.get("EVE_DOGMA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")))
+D = json.load(gzip.open(os.environ.get("EXFA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")))
 T = {int(k): v for k, v in D["types"].items()}
 NAME = {}
 for k, v in sorted(T.items()):

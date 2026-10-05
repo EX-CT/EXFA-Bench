@@ -109,7 +109,7 @@ def explicit_buffs(fit, buffs):
         return
     if _DBUFF_AGG is None:
         import gzip
-        ds = os.environ.get("EVE_DOGMA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")
+        ds = os.environ.get("EXFA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")
         _DBUFF_AGG = {int(k): v.get("aggregate") for k, v in json.load(gzip.open(ds)).get("dbuffs", {}).items()}
     from eos.saveddata.commandLink import _getAfflictor, _BUFF_CATEGORY, _GANG_EFFECT
     vals = {}

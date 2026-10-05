@@ -24,7 +24,7 @@ handler_only, unverified37, or the skip reason).
 Run with the Pyfa venv: cd $PYFA && PYTHONPATH=$STUBS $PYFA_PY effects/tools/gen_effects.py OUT"""
 import copy, gzip, json, os, re, sys, tempfile
 PYFA = os.environ.get("PYFA", "/workspace/exct-eve/ref/pyfa")
-DATASET = os.environ.get("EVE_DOGMA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")
+DATASET = os.environ.get("EXFA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")
 sys.path.insert(0, PYFA)
 import config  # noqa
 config.defPaths(tempfile.mkdtemp(prefix="eff-gen-"))

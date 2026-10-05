@@ -6,7 +6,7 @@ Pyfa service layer (oracle/pyfa_lookup.py). ext/rpc/MANIFEST.json: {case: {featu
 import gzip, json, os, pathlib
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SUITE = ROOT / "ext" / "rpc"
-D = json.load(gzip.open(os.environ.get("EVE_DOGMA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")))
+D = json.load(gzip.open(os.environ.get("EXFA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")))
 T = {int(k): v for k, v in D["types"].items()}
 NAME = {}
 for k, v in sorted(T.items()):

@@ -22,7 +22,7 @@ REF = os.environ.get("EXCT_REF", "/workspace/exct-eve/ref")
 PYFA = os.environ.get("PYFA", f"{REF}/pyfa")
 PY = os.environ.get("PYFA_PY", f"{REF}/pyfa-venv/bin/python")
 STUB = os.environ.get("WX_STUB", f"{REF}/stubs")
-DATASET = os.environ.get("EVE_DOGMA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")
+DATASET = os.environ.get("EXFA_DATASET", "/workspace/exct-eve/data/dataset-3569502.json.gz")
 SUITE = ROOT / "effects"
 
 D = json.load(gzip.open(DATASET))
