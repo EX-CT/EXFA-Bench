@@ -9,7 +9,8 @@
 # EX-CT/eve-dogma-bench commit it was taken from); override a snapshot with
 # SUITE_GRAPHS / SUITE_CAP / SUITE_MUTATED / SUITE_FORMATS=/path.
 set -euo pipefail
-ENGINE=$(readlink -f "$1"); OUT=$(mkdir -p "$2" && cd "$2" && pwd); N=${3:-ci}
+# ENGINE may be a binary path or a multi-word command ("wasmtime run ... exfa.wasm"); only resolve real files.
+ENGINE=$1; [ -f "$ENGINE" ] && ENGINE=$(readlink -f "$ENGINE"); OUT=$(mkdir -p "$2" && cd "$2" && pwd); N=${3:-ci}
 BENCH=$(cd "$(dirname "$0")/.." && pwd)
 declare -A DIR
 for s in graphs cap mutated formats; do
@@ -22,7 +23,7 @@ rc=0
 step() { local name=$1; shift; echo "== $name"; "$@" > "$OUT/$name.log" 2>&1 || { echo "   (exit $? - see $OUT/$name.log; scored by check_no_regress)"; rc=1; }; }
 cd "$BENCH"
 step core     python3 run.py --name "$N" --cmd "$ENGINE calc" --batch-cmd "$ENGINE batch" --batch-repeat 1 --latency-n 5
-rm -rf "$OUT/core"; cp -r "results/$N" "$OUT/core"; rm -rf "results/$N"
+if [ -d "results/$N" ]; then rm -rf "$OUT/core"; cp -r "results/$N" "$OUT/core"; fi; rm -rf "results/$N"
 step ext      python3 ext/tools/score.py --batch-cmd "$ENGINE batch" --name "$N" --out "$OUT/ext.json"
 step ext_rpc  python3 ext/tools/score_rpc.py --cmd "$ENGINE serve-stdio" --name "$N" --out "$OUT/ext_rpc.json"
 step batch    python3 batch/run_batch.py --cmd "$ENGINE" --name "$N" --out "$OUT/batch.json"
@@ -34,13 +35,13 @@ if [[ -n "${PRICE_RULE_CMD:-}" ]]; then
 fi
 cd "${DIR[graphs]}"
 step graphs   python3 graphs/run_graphs.py --name "$N" --rpc-cmd "$ENGINE serve-stdio"
-rm -rf "$OUT/graphs"; cp -r "results/graphs-$N" "$OUT/graphs"
+if [ -d "results/graphs-$N" ]; then rm -rf "$OUT/graphs"; cp -r "results/graphs-$N" "$OUT/graphs"; fi
 cd "${DIR[cap]}"
 step cap      python3 cap/run_cap.py --batch-cmd "$ENGINE batch" --name "$N"
-cp "cap/results/$N.json" "$OUT/cap.json"
+[ -f "cap/results/$N.json" ] && cp "cap/results/$N.json" "$OUT/cap.json" || true
 cd "${DIR[mutated]}"
 step mutated  python3 mutated/run_mutated.py --name "$N" --cmd "$ENGINE calc" --batch-cmd "$ENGINE batch" --batch-repeat 1 --latency-n 5
-rm -rf "$OUT/mutated"; cp -r "mutated/results/$N" "$OUT/mutated"
+if [ -d "mutated/results/$N" ]; then rm -rf "$OUT/mutated"; cp -r "mutated/results/$N" "$OUT/mutated"; fi
 cd "${DIR[formats]}"
 step formats  python3 tools/evaluate_formats.py --rpc "$ENGINE serve-stdio" --name "$N" --out "$OUT/formats"
 python3 - "$OUT" "$BENCH" "${DIR[graphs]}" "${DIR[cap]}" "${DIR[mutated]}" "${DIR[formats]}" <<'PY'
