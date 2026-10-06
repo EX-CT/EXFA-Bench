@@ -109,9 +109,13 @@ def version_fields(v, want_source="embedded"):
     if v.get("sde_source") != want_source:
         bad.append(f"sde_source {v.get('sde_source')!r} != {want_source}")
     if want_source == "embedded":
-        for k, w in (("pack_format", "1.0"), ("snapshot_schema_version", 1), ("target", "native")):
+        for k, w in (("pack_format", "1.0"), ("snapshot_schema_version", 1)):
             if v.get(k) != w:
                 bad.append(f"{k} {v.get(k)!r} != {w!r}")
+        # target reports the actual build the suite runs against (native binary, wasip1 CLI wasm,
+        # unknown-unknown web wasm) — the same baseline must score every flavour
+        if v.get("target") not in ("native", "wasm32-wasip1", "wasm32-unknown-unknown"):
+            bad.append(f"target {v.get('target')!r} != a known build target")
     return bad
 
 
