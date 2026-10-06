@@ -1,5 +1,7 @@
 # EXFA-Bench — EXFA · 精密装配助理 契约测试与 Pyfa 对照
 
+[![nightly](https://github.com/EX-CT/EXFA-Bench/actions/workflows/nightly.yml/badge.svg)](https://github.com/EX-CT/EXFA-Bench/actions/workflows/nightly.yml)
+
 Shared contract test & benchmark suites for the EXFA fitting engine (EX-CT). Any engine implementing the
 FitRequest → FitStats contract (see [CONTRACT.md](CONTRACT.md), owned by
 [EX-CT/EXFA-Engine](https://github.com/EX-CT/EXFA-Engine/tree/main/contract)) can be scored on **correctness against
