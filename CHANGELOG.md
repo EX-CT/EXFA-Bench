@@ -4,6 +4,9 @@ Variants: compare scores only at the same bench version (`VERSION`, shown in res
 Expected values always come from the Pyfa oracle (`oracle/pyfa_oracle.py`). Re-run `python3 bench.py --only <X>` after
 pulling.
 
+## Unreleased
+- Contract 1.4.6: request normalisation is silent. `pending/state/*.expected.json` `warnings` -> `[]`
+  (`modules[].state` still proves the correction); `tools/check_module_state.py` docstring updated.
 ## 1.10.0 (2026-10-03 12:30 CST, tag v1.10.0)
 - Released from branch pending-1.10. `tools/evaluate.py` stays pinned to 1.8.0 (`3da9671`). CONTRACT.md = revision
   1.4.5 plus the "Draft 1.10: stats-ext" section (proposed fields, scored only by `ext/`).

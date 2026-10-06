@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Contract draft 1.4.5 module-state check (informational, not scored yet):
+"""Contract 1.4.5/1.4.6 module-state check (informational, not scored yet):
   python3 tools/check_module_state.py --batch-cmd "<engine> batch"
 Runs pending/state/state_*.json through the engine's batch command and compares `modules[].state` and the
-state-correction entries of `warnings[]` with pending/state/*.expected.json (Pyfa isValidState, oracle/state_oracle.py)."""
+state-correction entries of `warnings[]` with pending/state/*.expected.json (Pyfa isValidState, oracle/state_oracle.py).
+Since contract 1.4.6 the corrections are silent: expected `warnings` is `[]` and the `modules[].state` comparison is
+what proves normalisation still happens."""
 import argparse, json, pathlib, shlex, subprocess, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ap = argparse.ArgumentParser(); ap.add_argument("--batch-cmd", required=True); ap.add_argument("--cwd")
