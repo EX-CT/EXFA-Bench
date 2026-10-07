@@ -58,7 +58,7 @@ def main():
     reqs = [json.loads(f.read_text()) for f in files]
     lines = "".join(json.dumps({"jsonrpc": "2.0", "id": i, "method": r["method"], "params": r["params"]}) + "\n"
                     for i, r in enumerate(reqs))
-    out = subprocess.run(a.cmd, shell=True, input=lines, capture_output=True, text=True)
+    out = subprocess.run(a.cmd, shell=True, input=lines, capture_output=True, encoding="utf-8", text=True)
     resp = {}
     for l in out.stdout.splitlines():
         try:

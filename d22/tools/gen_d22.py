@@ -15,6 +15,10 @@ D = ROOT / "d22"
 sys.path.insert(0, str(ROOT / "batch")); sys.path.insert(0, str(D))
 import rule as R, prices as P  # noqa: E402
 
+# Fixtures are generated for the SDE build of $EXFA_DATASET (same dataset the engine under test embeds);
+# regenerate after every SDE update: EXFA_DATASET=<dataset.json.gz> python3 d22/tools/gen_d22.py
+SDE_BUILD = P.dataset_build()
+
 man = {}
 
 
@@ -131,7 +135,7 @@ HDR = struct.Struct("<4sHHIHHq32sQ")      # 64 bytes
 DIRE = struct.Struct("<4sIQQ")            # 24 bytes
 
 
-def pack(magic=b"EDPK", major=1, build=3569502, rev=5, sections=None, dir_override=None):
+def pack(magic=b"EDPK", major=1, build=SDE_BUILD, rev=5, sections=None, dir_override=None):
     sections = sections or {b"META": json.dumps({"format_version": 1, "pipeline": "bench-synthetic"}).encode()}
     tags = sorted(sections)
     off = 64 + DIRE.size * len(tags)
@@ -173,7 +177,7 @@ def isk(t, salt):
     return float(500 + (t * 7919 + salt * 104729) % 100000 * 10)
 
 
-def snapshot(build=3569502, version=1, schema="eve-price-snapshot", tweak=None, rehash=True):
+def snapshot(build=SDE_BUILD, version=1, schema="eve-price-snapshot", tweak=None, rehash=True):
     types = {}
     for t in TYPES:
         p0 = isk(t, 3)
@@ -217,7 +221,7 @@ with gzip.GzipFile(fileobj=buf, mode="wb", mtime=0, filename="") as g:
 # ============================================================ sde suite
 FITS = ["exct_rifter", "aoe_web_paint_rifter", "drones_sentry_dominix", "booster_strongblue", "dmgpattern_rah_hyperion"]
 write("sde", "version_cli_fields", {"check": "version_fields", "transport": "cli",
-      "note": "`version`: engine, sde_build 3569502, sde_revision, sde_release, sde_hash sha256:<64hex>, sde_source embedded, "
+      "note": f"`version`: engine, sde_build {SDE_BUILD}, sde_revision, sde_release, sde_hash sha256:<64hex>, sde_source embedded, "
               "pack_format 1.0, snapshot_schema_version 1, target native"})
 write("sde", "version_rpc_fields", {"check": "version_fields", "transport": "rpc", "note": "RPC `version`: same checks"})
 write("sde", "version_rpc_equals_cli", {"check": "version_rpc_equals_cli", "note": "RPC version == CLI version"})
@@ -305,7 +309,7 @@ for f, code, note in [("snap-v2.json", "PRICE_SNAPSHOT_VERSION", "schema_version
 write("price_inject", "rpc_prices_load_bad_hash", {"check": "inject_rpc_error", "calls": [["prices_load", {"path": "d22/data/prices/snap-bad-hash.json"}]],
       "code": "PRICE_SNAPSHOT_INVALID", "note": "RPC prices_load with a hash mismatch -> PRICE_SNAPSHOT_INVALID"})
 write("price_inject", "file_other_sde_build_warns", {"check": "inject_calc", "fit": fit(), "args": ["--prices", "d22/data/prices/snap-other-build.json"],
-      "price_source": "file", "warning": "price snapshot for SDE build 3500000, engine data is 3569502",
+      "price_source": "file", "warning": f"price snapshot for SDE build 3500000, engine data is {SDE_BUILD}",
       "note": "snapshot for another SDE build is accepted with a warning"})
 write("price_inject", "sde_and_prices", {"check": "inject_calc", "fit": fit(), "args": ["--sde", "$SDE_PACK", "--prices", SNAP],
       "price_source": "file", "needs": NEEDS, "note": "--sde does not change prices (docs/22 §2.4)"})

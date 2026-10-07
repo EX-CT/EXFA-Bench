@@ -59,8 +59,7 @@ class Batch:
 
     def run(self, reqs):
         inp = "".join(json.dumps({"method": m, "params": p}) + "\n" for m, p in reqs)
-        r = subprocess.run(self.cmd, shell=True, cwd=self.cwd, input=inp, capture_output=True, text=True,
-                           encoding="utf-8")
+        r = subprocess.run(self.cmd, shell=True, cwd=self.cwd, input=inp, capture_output=True, encoding="utf-8", text=True)
         out = []
         for line in r.stdout.splitlines():
             try:

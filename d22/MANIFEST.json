@@ -489,7 +489,7 @@
  },
  "sde/version_cli_fields": {
   "check": "version_fields",
-  "note": "`version`: engine, sde_build 3569502, sde_revision, sde_release, sde_hash sha256:<64hex>, sde_source embedded, pack_format 1.0, snapshot_schema_version 1, target native",
+  "note": "`version`: engine, sde_build 3586130, sde_revision, sde_release, sde_hash sha256:<64hex>, sde_source embedded, pack_format 1.0, snapshot_schema_version 1, target native",
   "suite": "sde"
  },
  "sde/version_matches_meta": {

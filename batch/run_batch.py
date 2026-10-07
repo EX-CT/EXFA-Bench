@@ -51,7 +51,7 @@ def with_price(out, fit, req, l1, engine_args=()):
 
 
 STRIP_OUT = ("price", "provenance")
-SDE_BUILD = 3569502
+SDE_BUILD = prices.dataset_build()   # the build of $EXFA_DATASET the engine was compiled with
 
 
 def expected_prov(req, fit, engine_args):
@@ -169,7 +169,7 @@ def semantics_error(r):
 
 
 def calc_one(engine, fit):
-    r = subprocess.run(engine.split() + ["calc"], input=json.dumps(fit), capture_output=True, text=True, timeout=120)
+    r = subprocess.run(engine.split() + ["calc"], input=json.dumps(fit), capture_output=True, encoding="utf-8", text=True, timeout=120)
     try:
         return json.loads(r.stdout)
     except ValueError:
@@ -178,7 +178,7 @@ def calc_one(engine, fit):
 
 def calc_jsonl(engine, fits):
     r = subprocess.run(engine.split() + ["batch"], input="".join(json.dumps(f) + "\n" for f in fits),
-                       capture_output=True, text=True, timeout=600)
+                       capture_output=True, encoding="utf-8", text=True, timeout=600)
     return [json.loads(l) for l in r.stdout.splitlines()]
 
 

@@ -20,7 +20,7 @@ DMG = ("em", "thermal", "kinetic", "explosive")
 
 
 def run_batch(cmd, reqs):
-    out = subprocess.run(cmd, shell=True, input="".join(json.dumps(r) + "\n" for r in reqs), capture_output=True, text=True, timeout=900)
+    out = subprocess.run(cmd, shell=True, input="".join(json.dumps(r) + "\n" for r in reqs), capture_output=True, encoding="utf-8", text=True, timeout=900)
     lines = out.stdout.splitlines()
     if len(lines) != len(reqs):
         raise SystemExit(f"batch returned {len(lines)} lines for {len(reqs)} requests (rc {out.returncode}): {out.stderr[-2000:]}")
@@ -147,7 +147,7 @@ def main():
         if json.dumps(strip(x), sort_keys=True) != json.dumps(strip(y), sort_keys=True):
             errs.append(f"req {i} ({kinds[i]}): nondeterministic batch output")
     for i in rng.sample(range(len(reqs)), min(a.single, len(reqs))):
-        out = subprocess.run(a.cmd, shell=True, input=json.dumps(reqs[i]), capture_output=True, text=True, timeout=120)
+        out = subprocess.run(a.cmd, shell=True, input=json.dumps(reqs[i]), capture_output=True, encoding="utf-8", text=True, timeout=120)
         try:
             s = json.loads(out.stdout)
         except ValueError:

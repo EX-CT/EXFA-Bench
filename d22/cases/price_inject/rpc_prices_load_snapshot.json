@@ -4,7 +4,7 @@
    "prices_load",
    {
     "snapshot": {
-     "content_hash": "sha256:7a872060d99a1f86e3bf300c6a2592601fc4eb63640fb85c97c9ffe5acd3f4ee",
+     "content_hash": "sha256:be6f40ba920c4c3cef163c1b1c9d017c7571abadcd2908835daa6bf8a496deea",
      "currency": "ISK",
      "generated_at": "2026-10-03T05:31:07Z",
      "market": "jita44",
@@ -22,7 +22,7 @@
      },
      "schema": "eve-price-snapshot",
      "schema_version": 1,
-     "sde_build": 3569502,
+     "sde_build": 3586130,
      "snapshot_id": "jita44-20261003T053000Z",
      "source": {
       "endpoint": "synthetic (eve-dogma-bench d22/data)",

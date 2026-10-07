@@ -28,7 +28,7 @@ def call(engine, req, transport="rpc", timeout=600, engine_args=()):
     payload = to_engine(req)
     if transport == "rpc":
         line = json.dumps({"id": 1, "method": METHOD, "params": payload}) + "\n"
-        r = subprocess.run(engine.split() + list(engine_args) + ["serve-stdio"], input=line, capture_output=True, text=True, timeout=timeout)
+        r = subprocess.run(engine.split() + list(engine_args) + ["serve-stdio"], input=line, capture_output=True, encoding="utf-8", text=True, timeout=timeout)
         for l in r.stdout.splitlines():
             try:
                 j = json.loads(l)
@@ -37,7 +37,7 @@ def call(engine, req, transport="rpc", timeout=600, engine_args=()):
             if j.get("id") == 1:
                 return from_engine(j["result"]) if "result" in j else {"error": j.get("error")}
         return {"error": {"code": "NO_RESPONSE", "message": (r.stderr or r.stdout)[-300:]}}
-    r = subprocess.run(engine.split() + list(engine_args) + CLI_ARGS, input=json.dumps(payload), capture_output=True, text=True, timeout=timeout)
+    r = subprocess.run(engine.split() + list(engine_args) + CLI_ARGS, input=json.dumps(payload), capture_output=True, encoding="utf-8", text=True, timeout=timeout)
     try:
         j = json.loads(r.stdout)
     except ValueError:

@@ -36,7 +36,7 @@ def load():
 def run_batch(cmd, reqs, cwd, timeout):
     data = "".join(json.dumps(r) + "\n" for r in reqs)
     t0 = time.perf_counter()
-    r = subprocess.run(cmd, shell=True, cwd=cwd, input=data, capture_output=True, text=True, timeout=timeout)
+    r = subprocess.run(cmd, shell=True, cwd=cwd, input=data, capture_output=True, encoding="utf-8", text=True, timeout=timeout)
     dt = time.perf_counter() - t0
     outs = []
     for l in r.stdout.splitlines():
@@ -50,7 +50,7 @@ def run_batch(cmd, reqs, cwd, timeout):
 def run_rpc(cmd, reqs, cwd, timeout):
     data = "".join(json.dumps({"id": i, "method": "graph", "params": r}) + "\n" for i, r in enumerate(reqs))
     t0 = time.perf_counter()
-    r = subprocess.run(cmd, shell=True, cwd=cwd, input=data, capture_output=True, text=True, timeout=timeout)
+    r = subprocess.run(cmd, shell=True, cwd=cwd, input=data, capture_output=True, encoding="utf-8", text=True, timeout=timeout)
     dt = time.perf_counter() - t0
     got = {}
     for l in r.stdout.splitlines():
@@ -67,7 +67,7 @@ def run_single(cmd, reqs, cwd, timeout):
     outs = []
     t0 = time.perf_counter()
     for r in reqs:
-        p = subprocess.run(cmd, shell=True, cwd=cwd, input=json.dumps(r), capture_output=True, text=True, timeout=timeout)
+        p = subprocess.run(cmd, shell=True, cwd=cwd, input=json.dumps(r), capture_output=True, encoding="utf-8", text=True, timeout=timeout)
         try:
             outs.append(json.loads(p.stdout))
         except ValueError:
