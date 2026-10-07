@@ -17,8 +17,8 @@ on:
         description: 'EX-CT/EXFA-Engine ref to build'
         default: 'main'
       sde_tag:
-        description: 'EX-CT/eve-sde-pipeline release with dataset-<build>.json.gz (pinned sde-3569502-r5)'
-        default: 'sde-3569502-r5'
+        description: 'EX-CT/EXFA-Data release with dataset-<build>-r<rev>.json.gz (pinned sde-3569502-r7)'
+        default: 'sde-3569502-r7'
       fuzz_seed:
         description: 'fuzz seed (default: run number)'
         default: ''
@@ -34,7 +34,8 @@ concurrency:
 env:
   GH_TOKEN: ${{ github.token }}
   ENGINE_REF: ${{ inputs.engine_ref || 'main' }}
-  SDE_TAG: ${{ inputs.sde_tag || 'sde-3569502-r5' }}
+  SDE_TAG: ${{ inputs.sde_tag || 'sde-3569502-r7' }}
+  PRESETS_TAG: presets-pyfa-3569502-r6
   FUZZ_SEED: ${{ inputs.fuzz_seed || github.run_number }}
 
 jobs:
@@ -52,7 +53,7 @@ jobs:
       - run: pip install pyyaml
       - name: Dataset (${{ env.SDE_TAG }})
         run: |
-          gh release download "$SDE_TAG" -R EX-CT/eve-sde-pipeline --pattern 'dataset-*.json.gz' -D _data
+          gh release download "$SDE_TAG" -R EX-CT/EXFA-Data --pattern 'dataset-*.json.gz' -D _data
           echo "EXFA_DATASET=$(ls $PWD/_data/dataset-*.json.gz | head -1)" >> "$GITHUB_ENV"
       - name: d22 self-test (bench-side validators, no engine)
         run: python3 d22/run_d22.py --suite all --self-test
@@ -89,8 +90,8 @@ jobs:
           workspaces: _engine
       - name: Dataset (${{ env.SDE_TAG }})
         run: |
-          gh release download "$SDE_TAG" -R EX-CT/eve-sde-pipeline --pattern 'dataset-*.json.gz' -D _data
-          gh release download "$SDE_TAG" -R EX-CT/eve-sde-pipeline --pattern 'presets-pyfa-*.json' -D _data
+          gh release download "$SDE_TAG" -R EX-CT/EXFA-Data --pattern 'dataset-*.json.gz' -D _data
+          gh release download "$PRESETS_TAG" -R EX-CT/EXFA-Bench --pattern 'presets-pyfa-*.json' -D _data
           f=$(ls "$PWD"/_data/dataset-*.json.gz | head -1)
           echo "EXFA_DATASET=$f" >> "$GITHUB_ENV"
           echo "EXFA_DATASET_R5=$f" >> "$GITHUB_ENV"
@@ -114,7 +115,7 @@ jobs:
       - name: Inventory check (docs/19 -> tests; non-blocking)
         continue-on-error: true
         run: |
-          gh repo clone EX-CT/eve-fit-docs _inv -- --depth 1 -q
+          gh repo clone EX-CT/EXFA-Docs _inv -- --depth 1 -q
           python3 tools/check_inventory.py --inventory _inv/docs/19-pyfa-feature-inventory.yaml \
             --columns f --root unit=_engine --root formats-rust=_engine
       - name: Fuzz self-consistency (no Pyfa)

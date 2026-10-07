@@ -14,7 +14,7 @@ Breaking changes bump `schema_version` and are listed in the changelog at the en
 | helpers | `eft FILE [--calc] [--skills N]`, `search Q`, `type ID|NAME`, `meta`, `bench FILE -n N` | |
 
 Dataset: `--dataset PATH`, else `$EVE_DOGMA_DATASET`, else `./dataset.json.gz`
-(`dataset-<sde_build>.json.gz` from the EX-CT/eve-sde-pipeline releases).
+(`dataset-3569502-r7.json.gz` from the EX-CT/EXFA-Data release `sde-3569502-r7`).
 
 Errors are returned as JSON, never as a panic: `{"error":{"code","message","path"}}`
 (codes: `BAD_JSON`, `BAD_REQUEST`, `UNKNOWN_TYPE`, `EFT_PARSE`, `UNKNOWN_METHOD`). Fitting problems are *not*
