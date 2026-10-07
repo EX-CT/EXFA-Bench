@@ -20,15 +20,15 @@ results/     scorecards (results/<variant>/scorecard.{md,json}, failures.json)
 
 ## Dataset (same for every variant)
 
-All variants must load the **same SDE build**: `dataset-3569502.json.gz` (CCP SDE build 3569502, 2026-10-02),
-published as a release asset of [EX-CT/eve-sde-pipeline](https://github.com/EX-CT/eve-sde-pipeline/releases/tag/sde-3569502):
+All variants must load the **same SDE build**: `dataset-3569502-r7.json.gz` (CCP SDE build 3569502, 2026-10-02),
+published as a release asset of [EX-CT/EXFA-Data](https://github.com/EX-CT/EXFA-Data/releases/tag/sde-3569502-r7):
 
 ```bash
-gh release download sde-3569502 -R EX-CT/eve-sde-pipeline -D data/
-# on the shared EXCT box it already exists at /workspace/exct-eve/data/dataset-3569502.json.gz
+gh release download sde-3569502-r7 -R EX-CT/EXFA-Data -p dataset-3569502-r7.json.gz -D data/
+# on the shared EXCT box it already exists at /workspace/exct-eve/data/dataset-3569502-r7.json.gz
 ```
 
-Format: gzip JSON documented in eve-sde-pipeline (`types`, `attributes`, `effects` with compact modifier tuples
+Format: gzip JSON documented in EXFA-Data (`types`, `attributes`, `effects` with compact modifier tuples
 `[func, domain, modified_attr, modifying_attr, operation, group_or_skill]`, `dbuffs`, `mutaplasmids`, …).
 A variant may convert it to any internal format, but must not use other data.
 
@@ -78,8 +78,8 @@ recommended) a batch command that reads JSONL requests and prints JSONL response
 
 ```bash
 python3 run.py --name variant-x \
-  --cmd       "/path/to/engine calc  --dataset /workspace/exct-eve/data/dataset-3569502.json.gz" \
-  --batch-cmd "/path/to/engine batch --dataset /workspace/exct-eve/data/dataset-3569502.json.gz" \
+  --cmd       "/path/to/engine calc  --dataset /workspace/exct-eve/data/dataset-3569502-r7.json.gz" \
+  --batch-cmd "/path/to/engine batch --dataset /workspace/exct-eve/data/dataset-3569502-r7.json.gz" \
   [--cwd DIR] [--cases 'cases/esf_*.json'] [--batch-repeat 5] [--latency-n 500]
 ```
 
