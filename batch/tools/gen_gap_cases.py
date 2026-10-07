@@ -38,7 +38,7 @@ SNAP = {"schema": "eve-price-snapshot", "schema_version": 1, "snapshot_id": "jit
                    "location_id": 60003760, "fetched_from": "2026-10-03T05:58:40Z", "fetched_to": "2026-10-03T06:00:00Z"},
         "rule": {"name": "jita_sell_band_weighted", "version": 1, "order_side": "sell", "location_id": 60003760,
                  "min_units": 10, "band": 0.05, "weighting": "units", "exact": True},
-        "currency": "ISK", "sde_build": 3569502, "type_count": len(types), "types": types, "missing": [],
+        "currency": "ISK", "sde_build": P.dataset_build(), "type_count": len(types), "types": types, "missing": [],
         "updater": {"name": "eve-dogma-bench synthetic", "version": "1"}}
 SNAP["content_hash"] = P.canonical_hash(SNAP)
 DATA.mkdir(exist_ok=True)

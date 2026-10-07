@@ -17,7 +17,7 @@ ROOT = D.parent
 sys.path.insert(0, str(ROOT / "batch")); sys.path.insert(0, str(D))
 import adapter as A, rule as R, prices as P  # noqa: E402
 
-SDE_BUILD = 3569502
+SDE_BUILD = P.dataset_build()   # the build of $EXFA_DATASET the engine was compiled with
 HASH_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
 TIME_RE = re.compile(r"^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$")
 SDE_KEYS = ("sde_build", "sde_hash")                       # provenance keys that must equal `version`

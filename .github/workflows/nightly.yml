@@ -17,8 +17,8 @@ on:
         description: 'EX-CT/EXFA-Engine ref to build'
         default: 'main'
       sde_tag:
-        description: 'EX-CT/EXFA-Data release with dataset-<build>-r<rev>.json.gz (pinned sde-3569502-r7)'
-        default: 'sde-3569502-r7'
+        description: 'EX-CT/EXFA-Data release with dataset-<build>-r<rev>.json.gz (pinned sde-3586130-r7)'
+        default: 'sde-3586130-r7'
       fuzz_seed:
         description: 'fuzz seed (default: run number)'
         default: ''
@@ -34,7 +34,7 @@ concurrency:
 env:
   GH_TOKEN: ${{ github.token }}
   ENGINE_REF: ${{ inputs.engine_ref || 'main' }}
-  SDE_TAG: ${{ inputs.sde_tag || 'sde-3569502-r7' }}
+  SDE_TAG: ${{ inputs.sde_tag || 'sde-3586130-r7' }}
   PRESETS_TAG: presets-pyfa-3569502-r6
   FUZZ_SEED: ${{ inputs.fuzz_seed || github.run_number }}
 

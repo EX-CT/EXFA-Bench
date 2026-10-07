@@ -24,6 +24,12 @@ def ds():
     return json.load(gzip.open(DATASET_R5))
 
 
+def dataset_build():
+    """SDE build of the dataset the engine under test was compiled with (EXFA_DATASET), so the suites do not pin
+    a build number — a new SDE release only needs regenerated fixture data, not runner edits."""
+    return int(ds()["sde"]["build"])
+
+
 def tinfo(t):
     return ds()["types"][str(t)]
 

@@ -23,7 +23,7 @@ def main():
                                                              + sorted((SUITE / "unit/cases").glob("*.json")))
     files = [f for f in files if (f.parent.parent / "expected" / f.name).exists()]
     reqs = [json.loads(f.read_text()) for f in files]
-    out = subprocess.run(a.batch_cmd, shell=True, input="".join(json.dumps(r) + "\n" for r in reqs), capture_output=True, text=True)
+    out = subprocess.run(a.batch_cmd, shell=True, input="".join(json.dumps(r) + "\n" for r in reqs), capture_output=True, encoding="utf-8", text=True)
     lines = out.stdout.splitlines()
     if len(lines) != len(reqs):
         raise SystemExit(f"batch returned {len(lines)} lines for {len(reqs)} requests: {out.stderr[-1500:]}")

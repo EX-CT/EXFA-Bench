@@ -25,7 +25,7 @@ def load_cases(pattern):
 def run_one(cmd, req, cwd, timeout):
     t0 = time.perf_counter()
     try:
-        r = subprocess.run(cmd, input=req, capture_output=True, text=True, cwd=cwd, timeout=timeout, shell=True)
+        r = subprocess.run(cmd, input=req, capture_output=True, encoding="utf-8", text=True, cwd=cwd, timeout=timeout, shell=True)
     except subprocess.TimeoutExpired:
         return None, timeout * 1000, "timeout"
     dt = (time.perf_counter() - t0) * 1000
@@ -50,7 +50,7 @@ def score(resp, exp):
 def batch_time(cmd, lines, cwd, timeout):
     data = "".join(l + "\n" for l in lines)
     t0 = time.perf_counter()
-    r = subprocess.run(cmd, input=data, capture_output=True, text=True, cwd=cwd, timeout=timeout, shell=True)
+    r = subprocess.run(cmd, input=data, capture_output=True, encoding="utf-8", text=True, cwd=cwd, timeout=timeout, shell=True)
     dt = time.perf_counter() - t0
     outs = [l for l in r.stdout.splitlines() if l.strip()]
     return dt, outs, r.returncode

@@ -169,5 +169,5 @@
  },
  "note": "snapshot for another SDE build is accepted with a warning",
  "price_source": "file",
- "warning": "price snapshot for SDE build 3500000, engine data is 3569502"
+ "warning": "price snapshot for SDE build 3500000, engine data is 3586130"
 }

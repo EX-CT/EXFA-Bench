@@ -32,7 +32,7 @@ def pending(req):
 def score(name, batch_cmd, cwd, cases, timeout=600):
     inp = "".join(json.dumps(c[1]) + "\n" for c in cases)
     t0 = time.time()
-    r = subprocess.run(batch_cmd, shell=True, cwd=cwd, input=inp, capture_output=True, text=True, timeout=timeout)
+    r = subprocess.run(batch_cmd, shell=True, cwd=cwd, input=inp, capture_output=True, encoding="utf-8", text=True, timeout=timeout)
     wall = time.time() - t0
     outs = r.stdout.splitlines()
     rows, per_metric, per_cat, rep = [], {}, {}, {}

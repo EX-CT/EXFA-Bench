@@ -21,7 +21,7 @@ def _json(stdout):
 
 def cli(engine, args, stdin=None, timeout=120):
     """ENGINE <args>; -> parsed JSON or {"error": {...}}"""
-    r = subprocess.run(engine.split() + list(args), input=stdin, capture_output=True, text=True, timeout=timeout)
+    r = subprocess.run(engine.split() + list(args), input=stdin, capture_output=True, encoding="utf-8", text=True, timeout=timeout)
     j = _json(r.stdout)
     if j is None:
         j = _json(r.stderr.strip().splitlines()[-1]) if r.stderr.strip() else None
@@ -47,7 +47,7 @@ def meta(engine):
 def rpc(engine, calls, gargs=(), timeout=300):
     """one serve-stdio session; calls = [(method, params)] -> [result or {"error"}] in order"""
     lines = "".join(json.dumps({"id": i + 1, "method": m, "params": p}) + "\n" for i, (m, p) in enumerate(calls))
-    r = subprocess.run(engine.split() + list(gargs) + ["serve-stdio"], input=lines, capture_output=True, text=True, timeout=timeout)
+    r = subprocess.run(engine.split() + list(gargs) + ["serve-stdio"], input=lines, capture_output=True, encoding="utf-8", text=True, timeout=timeout)
     got = {}
     for l in r.stdout.splitlines():
         j = _json(l)
@@ -87,7 +87,7 @@ def price_rule(cmd, orders, params):
     """-> entry dict, None (no price), or {"error": {"code": "RULE_REJECTED"}} when the command exits non-zero
     (an invalid rule); unparseable output with exit 0 is NO_OUTPUT"""
     r = subprocess.run(cmd, shell=True, input=json.dumps({"rule": params, "orders": orders}), capture_output=True,
-                       text=True, timeout=60)
+                       encoding="utf-8", text=True, timeout=60)
     if r.returncode != 0:
         return {"error": {"code": "RULE_REJECTED", "message": f"exit {r.returncode}: {r.stderr.strip()[-200:]}"}}
     j = _json(r.stdout)
