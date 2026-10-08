@@ -1,0 +1,18 @@
+{
+ "case": "unit_sel_drone",
+ "derivation": "Same source fit as unit_sel_drone_none_baseline; select:{drone_ids:['d1']} whitelists only drone d1 - and because module_ids is ABSENT, rep-x contributes nothing (a kind whose list is absent projects nothing, even though an id exists). Only one maintenance bot reaches the target: 15 armor per 5 s = 3.0 HP/s, single-entry so no diminishing penalty. Contrast: both bots together would apply ~5.99999 (two entries in the diminishing formula), and keeping rep-x too would read ~88.33 - so 3.0 pins both 'one drone selected' and 'module kind excluded'. Engine-verified.",
+ "excluded": {},
+ "ext": {},
+ "feature": "select-projection",
+ "oracle": "hand-derived (non-Pyfa); engine-verified",
+ "values": {
+  "max_velocity": 365.0,
+  "stank.armor": 3.0,
+  "stank.hull": 0.0,
+  "stank.shield": 0.0,
+  "tank.armor": 3.0,
+  "tank.hull": 0.0,
+  "tank.passive": 1.8,
+  "tank.shield": 0.0
+ }
+}

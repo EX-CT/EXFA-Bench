@@ -42,7 +42,7 @@ items:
   ENG-TGT-003: ['bench:ecm_*', 'web-bench:ecm_*', 'mcp-bench:ecm_*']
   ENG-PROJ-001: ['bench:proj_*', 'mcp:mcp.features.projected-environment', 'web-e2e:web.e2e.projected-web', 'web-bench:proj_*', 'mcp-bench:proj_*']
   ENG-PROJ-002: ['bench:pfighter_*', 'web-bench:pfighter_*', 'mcp-bench:pfighter_*', {ref: 'mcp:mcp.unit.projected-fighter-default-quantity', strength: partial, why: 'request normalisation (no quantity = full squadron); values via mcp-bench pfighter_*'}]
-  ENG-PROJ-003: ['bench:projfit_*', 'mcp-bench:projfit_*', {ref: 'mcp:mcp.unit.empty-nested-arrays', strength: partial, why: 'request normalisation (empty nested arrays in projected fits); values via mcp-bench'}, 'web-bench:projfit_*']
+  ENG-PROJ-003: ['bench:projfit_*', 'ext-unit:unit_sel_*', 'mcp-bench:projfit_*', {ref: 'mcp:mcp.unit.empty-nested-arrays', strength: partial, why: 'request normalisation (empty nested arrays in projected fits); values via mcp-bench'}, 'web-bench:projfit_*']
   ENG-PROJ-005: ['bench:aoe_*', 'bench:ecm_burst_*', 'bench:esf_burst*', 'web-bench:aoe_*', 'web-bench:ecm_burst_*', 'web-bench:esf_burst*', 'mcp-bench:aoe_*', 'mcp-bench:ecm_burst_*', 'mcp-bench:esf_burst*']
   ENG-PROJ-007: ['cap:in_void_bomb', 'mcp-cap:in_void_bomb', 'web-cap:in_void_bomb']
   ENG-FLT-001: ['bench:esf_burst_*', 'bench:fleet_*', 'ext:fleet_buffs_*', 'mcp:mcp.features.fleet-overrides', 'web-e2e:web.e2e.manual-fleet-buff', 'web-bench:esf_burst_*', 'web-bench:fleet_*', 'mcp-bench:esf_burst_*', 'mcp-bench:fleet_*', 'mcp-ext:fleet_buffs_*', 'web-ext:fleet_buffs_*']

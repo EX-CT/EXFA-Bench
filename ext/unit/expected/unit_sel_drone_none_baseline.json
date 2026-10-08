@@ -1,0 +1,18 @@
+{
+ "case": "unit_sel_drone_none_baseline",
+ "derivation": "Control for unit_sel_drone: Vexor (626) source, all-5 skills, one Large Remote Armor Repairer II (id rep-x) plus two Light Armor Maintenance Bot I (23711, ids d1/d2, active 1 each). No select: everything projects. The bots' armorDamageAmount 12 is boosted to 15 by the Vexor's Gallente Cruiser drone bonus (3 HP/s each at 5 s cycle); the armor layer sees rrps 85.3333 + 3 + 3 and Pyfa's diminishing formula gives 91.3324 HP/s. Drones project at range 0 regardless of distance_m (Pyfa semantics). Engine-verified.",
+ "excluded": {},
+ "ext": {},
+ "feature": "select-projection",
+ "oracle": "hand-derived (non-Pyfa); engine-verified",
+ "values": {
+  "max_velocity": 365.0,
+  "stank.armor": 91.33237821312365,
+  "stank.hull": 0.0,
+  "stank.shield": 0.0,
+  "tank.armor": 91.33237821312365,
+  "tank.hull": 0.0,
+  "tank.passive": 1.8,
+  "tank.shield": 0.0
+ }
+}

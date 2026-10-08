@@ -39,6 +39,34 @@
   "feature": "overrides-unit",
   "source": "hand-derived (non-Pyfa)"
  },
+ "unit_sel_drone": {
+  "feature": "select-projection",
+  "source": "hand-derived (non-Pyfa), engine-verified"
+ },
+ "unit_sel_drone_none_baseline": {
+  "feature": "select-projection",
+  "source": "hand-derived (non-Pyfa), engine-verified"
+ },
+ "unit_sel_empty": {
+  "feature": "select-projection",
+  "source": "hand-derived (non-Pyfa), engine-verified"
+ },
+ "unit_sel_rep1": {
+  "feature": "select-projection",
+  "source": "hand-derived (non-Pyfa), engine-verified"
+ },
+ "unit_sel_rep_both": {
+  "feature": "select-projection",
+  "source": "hand-derived (non-Pyfa), engine-verified"
+ },
+ "unit_sel_rep_none_baseline": {
+  "feature": "select-projection",
+  "source": "hand-derived (non-Pyfa), engine-verified"
+ },
+ "unit_sel_unmatched": {
+  "feature": "select-projection",
+  "source": "hand-derived (non-Pyfa), engine-verified"
+ },
  "unit_val_max_type_fitted": {
   "feature": "validity-unit",
   "source": "hand-derived (non-Pyfa)"
