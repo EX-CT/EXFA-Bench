@@ -1,8 +1,8 @@
 {
  "schema": "no-regress/1",
- "note": "raised to EX-CT/EXFA-Engine@f3310de (ext 239/239, ext_rpc 45/54 incl. pyfa presets)",
+ "note": "raised to Engine@6541c15 native gate run 37644950106 (ext_rpc 54/54: names.* via search aliases)",
  "created": "2026-10-03T14:07:47+0800",
- "updated": "2026-10-06T01:29:28+0800",
+ "updated": "2026-10-08T12:22:59+0800",
  "suites": {
   "core": {
    "passed": 339,
@@ -597,7 +597,7 @@
    "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
   },
   "ext_rpc": {
-   "passed": 45,
+   "passed": 54,
    "total": 54,
    "passed_ids": [
     "backup_one",
@@ -615,6 +615,9 @@
     "mkt_group_damage_control_ii",
     "mkt_group_hammerhead_ii",
     "mkt_root",
+    "names_officer",
+    "names_renamed",
+    "names_trig",
     "srch_dc_t2",
     "srch_dda",
     "srch_lse",
@@ -628,6 +631,12 @@
     "type_attr_large_shield_extender_ii",
     "type_attr_rifter",
     "type_attr_svipul",
+    "type_desc_damage_control_ii",
+    "type_desc_hammerhead_ii",
+    "type_desc_ishtar",
+    "type_desc_large_shield_extender_ii",
+    "type_desc_rifter",
+    "type_desc_svipul",
     "type_reqskills_damage_control_ii",
     "type_reqskills_hammerhead_ii",
     "type_reqskills_ishtar",
@@ -646,7 +655,7 @@
     "var_large_shield_extender_ii",
     "var_medium_armor_repairer_i"
    ],
-   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
+   "ref": "c6b6b4f9825beefbe2361f3752b978155de39660"
   },
   "effects": {
    "passed": 2378,
