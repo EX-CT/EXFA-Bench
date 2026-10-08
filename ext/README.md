@@ -1,6 +1,6 @@
 # ext suite: stats-ext, heat, fleet.buffs, overrides (bench 1.10, docs/20 P0-3 / P0-4)
 
-175 cases + 12 hand-derived unit cases (`unit/`). Values are keyed by JSON pointer into the **proposed** FitStats fields of CONTRACT.md "Draft 1.10:
+175 cases + 19 hand-derived unit cases (`unit/`). Values are keyed by JSON pointer into the **proposed** FitStats fields of CONTRACT.md "Draft 1.10:
 stats-ext" (no engine implements them yet, so a missing pointer is reported as `not_implemented`), plus the bench
 metrics (`values`) for every case.
 
@@ -18,6 +18,7 @@ metrics (`values`) for every case.
 | breacher_dc, char_implants, alpha_clone, damage_pattern_builtin, vs_target_profile_builtin, attr_sources, attr_dependants | 4, 6, 5, 6, 6, 6, 4 | docs/19 f-`missing` items (CONTRACT.md "Draft 1.11: missing-f"; oracle `ORACLE_EXTRA=drafts,sources,attrs`); generator `tools/gen_missing.py`; MANIFEST `item` = docs/19 id |
 | rpc/ (lookups) | 54 | Pyfa service layer (`oracle/pyfa_lookup.py`): variations, item compare, market tree, jargon search, implant sets, EVEMon import, renamed-item names, XML backup, `type` item stats (attributes/effects, description, traits, required skills: MKT-003 / ENG-SHIP-006 / CHR-008, f partial); `tools/gen_rpc.py`, `tools/make_rpc_expected.py`, `tools/score_rpc.py --cmd "ENGINE serve-stdio"` |
 | overrides | 22 + 10 unit | Pyfa attribute overrides (oracle `apply_overrides`); 10 hand-derived unit cases in `unit/` (see below) |
+| select-projection | 7 unit | `projected[kind=fit].select` module/drone id whitelists: baseline vs rep-a-only vs both vs empty vs unmatched id (asserts `/warnings/0`), plus a drone select that also proves a kind with an absent list projects nothing. Hand-derived, engine-verified (`unit_sel_*`) |
 
 Fits: hand-built reference fits (Venture, Hulk, Covetor, Procurer, Porpoise, Guardian, Basilisk, Oneiros, Scimitar,
 Zarmazd, maintenance-bot Vexor / Dominix, ...) and random legal fits from the `oracle/fuzz/gen_legal.py` pool
@@ -31,6 +32,15 @@ mutated modules (rolled vs other attributes), projected modules and fits, a boos
 supports beyond Pyfa (skill types, attributes the type lacks, overrides inside nested FitRequests) is hand-derived:
 `unit/cases/unit_ovr_*` + `unit/expected` (feature `overrides-unit`, 10 cases incl. the six 1.10 hand-derived
 cases, renamed), each with a `derivation` text. Generator: `tools/gen_overrides.py`.
+
+**select-projection** (projected-fit `select` whitelists): `unit/cases/unit_sel_*` — a Guardian with two identical
+Large Remote Armor Repairer II (ids rep-a/rep-b) projected onto a bare Rifter at in-optimal range, selecting one id /
+both / empty / an unmatched id (warning asserted at `/warnings/0`), and a Vexor variant proving a kind whose id list is
+absent projects nothing while `drone_ids` selects one of two maintenance bots. Hand-derived with the engine-verified
+numbers in each `derivation` (incoming RR is sub-additive per Pyfa's diminishing-returns formula, so 'one of two' is
+slightly more than half). The `exfa/compute@1` envelope (FitSpec shorthand normalization: default skill level 5,
+module state = active-if-activatable else online, `drones[].active` = quantity) is covered by exfa-core Rust tests
+(`crates/exfa-core/tests/compute.rs`), not a bench driver.
 
 ```
 python3 ext/tools/gen_ext.py [POOL_LIST LEGAL_JSONL]   # cases except overrides

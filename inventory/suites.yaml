@@ -19,7 +19,7 @@ suites:
   effects:   {column: f, kind: files, dir: effects/cases, ext: .json}    # 1.10 effect suite (P0-2)
   ext:       {column: f, kind: files, dir: ext/cases, ext: .json}        # 1.10 stats-ext / heat / fleet.buffs / overrides
   ext-rpc:   {column: f, kind: files, dir: ext/rpc/cases, ext: .json}    # 1.11 draft lookups (JSON-RPC, Pyfa service layer: oracle/pyfa_lookup.py; ext/tools/score_rpc.py)
-  ext-unit:  {column: f, kind: files, dir: ext/unit/cases, ext: .json}   # 1.11 hand-derived (non-Pyfa) overrides / validity unit cases
+  ext-unit:  {column: f, kind: files, dir: ext/unit/cases, ext: .json}   # 1.11 hand-derived (non-Pyfa) overrides / validity / select-projection unit cases
   cap:       {column: f, kind: files, dir: suites/cap/cap/cases, ext: .json}               # pinned: suites/cap/SOURCE
   mut:       {column: f, kind: files, dir: suites/mutated/mutated/cases, ext: .json}       # pinned: suites/mutated/SOURCE
   fmt:       {column: formats, kind: files, dir: suites/formats/formats/edge, ext: ""}     # pinned: suites/formats/SOURCE
