@@ -9,7 +9,8 @@ damage pattern, dropped modules/drones. Then it checks properties every correct 
   determinism       the same batch run twice gives byte-identical JSON (meta excluded)
   batch == single   `calc` on one request gives the same stats as that request inside `batch`
   bounds            resonances in [0,1]; hp, ehp, dps, volley, velocity, capacity >= 0; finite numbers;
-                    ehp.total >= hp.total; dps/volley totals = sum of the damage types; align = ln(4)*agility*mass/1e6
+                    ehp.total >= hp.total; dps/volley totals = sum of the damage types (+ `pure`, contract 1.4.4
+                    breacher pods); align = ln(4)*agility*mass/1e6
   monotonic         all skills V never lowers hp.total, capacitor capacity or max_targets vs the same fit at all skills 0
 Exit 1 on any violation; writes ci-invariants.json + a markdown summary (to $GITHUB_STEP_SUMMARY if set).
 """
@@ -89,7 +90,7 @@ def check(o, errs, tag):
     for k in ("dps", "volley"):
         v = tot.get(k, {})
         if isinstance(v, dict) and num(v.get("total")):
-            parts = [v.get(t, 0) or 0 for t in DMG]
+            parts = [v.get(t, 0) or 0 for t in (*DMG, "pure")]
             if any(x < -1e-9 for x in parts):
                 bad(f"{k} negative part {parts}")
             if abs(sum(parts) - v["total"]) > 1e-3 * max(1, abs(v["total"])):
