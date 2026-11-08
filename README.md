@@ -51,18 +51,30 @@ tools/round1_sha.sh /path/to/exfa    # -> sha256 of the frozen 1.8.0 corpus batc
 Compacts `suites/round1/cases/*.json` into JSONL and runs one `ENGINE batch`, exactly like the engine's
 `ci/run_suites.sh` `ci/round1.sha256` check (currently `2667a6fb…`).
 
-## Dataset
+## Dataset and the Pyfa oracle (read this before trusting a green run)
 
-All suites target SDE build **3569502**: `dataset-3569502-r5.json.gz`, a release asset of
-[EX-CT/eve-sde-pipeline](https://github.com/EX-CT/eve-sde-pipeline/releases/tag/sde-3569502-r5).
+Two independent things are pinned:
 
-```bash
-gh release download sde-3569502-r5 -R EX-CT/eve-sde-pipeline --pattern 'dataset-*.json.gz' -D data/
-```
+- **Oracle** — expected values in `expected/` come from Pyfa v2.69.0 (eos, its `eve.db` = client data build 3532181) via
+  `oracle/pyfa_oracle.py`. They are committed; CI never runs Pyfa and Pyfa releases do not change them. They change only when
+  someone deliberately regenerates them (see below).
+- **Dataset** — the suites run against the SDE release named by `SDE_TAG` in `.github/workflows/nightly.yml`
+  (currently `sde-3586130-r7`, from [EX-CT/EXFA-Data](https://github.com/EX-CT/EXFA-Data/releases)); locally, any
+  `dataset-*.json.gz` via `EXFA_DATASET`. Fixtures that embed a build number (price snapshots, d22 warnings) follow the
+  dataset's build, so a newer SDE does not make them stale.
 
-Expected values come from Pyfa (eos, Pyfa client data build 3532181) via `oracle/pyfa_oracle.py`;
-`expected/known_divergences.json` lists metrics excluded because Pyfa's data is older than the SDE or because Pyfa
-disagrees with CCP's own modifiers. Known Pyfa-vs-SDE data drift: `oracle/data/pyfa-data-drift.{json,md}`.
+So a green run means "no regression against Pyfa as of build 3532181, on this dataset" — not "verified by Pyfa on the latest
+SDE". Pyfa's data lags CCP's SDE; metrics where it does are excluded in `expected/known_divergences.json` and described in
+`oracle/data/pyfa-data-drift.{json,md}`.
+
+SDE updates are adopted by the engine locally (`EXFA-Engine/ci/sde_update.py`, which gates against this repo); the
+policy is in EXFA-Docs `docs/28-update-policy.md`.
+
+**Moving the oracle** (when Pyfa ships a newer `eve.db`): re-run `tools/pyfa_drift.py --eve-db PATH --dataset <dataset>`,
+prune resolved drift entries, regenerate `expected/` with `oracle/pyfa_oracle.py`, review every changed value (Pyfa
+behaviour change vs engine bug; contract rulings in docs/17 may override Pyfa), then raise the baseline
+(`tools/check_no_regress.py --update`) and, if the Pyfa preset data changed, publish a new `presets-pyfa-*` release and
+update `PRESETS_TAG` here and in EXFA-Engine's `ci.yml`.
 
 ## Provenance
 
