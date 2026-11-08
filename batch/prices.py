@@ -11,6 +11,7 @@ Rulings (eve, 2026-10-03, docs/23):
 Bench interpretation (not ruled): a `--prices` file is L4 with `source` "injected" and `layer` "snapshot";
 line / block `snapshot_time` = the L4 market_time (null for a plain map file or non-L4 lines)."""
 import gzip, json, math, os
+from pathlib import Path
 from functools import lru_cache
 
 DATASET_R5 = os.environ.get("EXFA_DATASET_R5") or os.environ.get("EXFA_DATASET") or "/workspace/exct-eve/data/dataset-3569502-r5.json.gz"
@@ -246,6 +247,33 @@ def canonical_hash(obj):
     import hashlib
     o = {k: v for k, v in obj.items() if k != "content_hash"}
     return "sha256:" + hashlib.sha256(jcs(o).encode("utf-8")).hexdigest()
+
+
+_MATERIALIZED = {}
+
+
+def materialize_snapshot(path):
+    """Fixture snapshot files carry the `sde_build` they were generated for. A --prices file whose build differs from
+    the dataset under test makes the engine add a "snapshot is for another SDE build" warning, which is irrelevant to
+    the cases that use it (and would change their output) — so the engine is handed a temp copy stamped with
+    dataset_build() and re-hashed (content_hash covers sde_build). Plain (non-gz) eve-price-snapshot files only; any
+    other file, or one already at the right build, is returned unchanged. The files in batch/data stay untouched, so a
+    new SDE release needs no fixture regeneration."""
+    path = str(path)
+    if path in _MATERIALIZED:
+        return _MATERIALIZED[path]
+    out = path
+    if not path.endswith(".gz"):
+        d = json.load(open(path, encoding="utf-8"))
+        if isinstance(d, dict) and d.get("schema") == "eve-price-snapshot" and d.get("sde_build") != dataset_build():
+            import tempfile
+            d["sde_build"] = dataset_build()
+            d["content_hash"] = canonical_hash(d)
+            tmp = Path(tempfile.mkdtemp(prefix="bench-snap-")) / Path(path).name
+            tmp.write_text(json.dumps(d), encoding="utf-8")
+            out = str(tmp)
+    _MATERIALIZED[path] = out
+    return out
 
 
 def load_l4(path):

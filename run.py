@@ -123,7 +123,7 @@ def evaluate(a):
             "values_correct": total_ok, "values_total": total, "accuracy": total_ok / total if total else 0,
             "groups": {g: {"ok": v[0], "total": v[1]} for g, v in sorted(per_group.items())},
             "metrics": {k: {"ok": v[0], "total": v[1]} for k, v in sorted(per_metric.items())},
-            "errors": len(errors), "perf": perf, "host": os.uname().machine, "time": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
+            "errors": len(errors), "perf": perf, "host": __import__("platform").machine(), "time": time.strftime("%Y-%m-%dT%H:%M:%S%z")}
     (out_dir / "scorecard.json").write_text(json.dumps(card, indent=1, default=str))
     (out_dir / "failures.json").write_text(json.dumps(failures, indent=1, default=str))
     md = [f"# Scorecard: {a.name}", "", f"- command: `{a.cmd}`" + (f", batch: `{a.batch_cmd}`" if a.batch_cmd else ""),

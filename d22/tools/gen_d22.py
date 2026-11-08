@@ -309,7 +309,7 @@ for f, code, note in [("snap-v2.json", "PRICE_SNAPSHOT_VERSION", "schema_version
 write("price_inject", "rpc_prices_load_bad_hash", {"check": "inject_rpc_error", "calls": [["prices_load", {"path": "d22/data/prices/snap-bad-hash.json"}]],
       "code": "PRICE_SNAPSHOT_INVALID", "note": "RPC prices_load with a hash mismatch -> PRICE_SNAPSHOT_INVALID"})
 write("price_inject", "file_other_sde_build_warns", {"check": "inject_calc", "fit": fit(), "args": ["--prices", "d22/data/prices/snap-other-build.json"],
-      "price_source": "file", "warning": f"price snapshot for SDE build 3500000, engine data is {SDE_BUILD}",
+      "price_source": "file", "warning": "price snapshot for SDE build 3500000, engine data is {SDE_BUILD}",   # placeholder, filled in by run_d22.py
       "note": "snapshot for another SDE build is accepted with a warning"})
 write("price_inject", "sde_and_prices", {"check": "inject_calc", "fit": fit(), "args": ["--sde", "$SDE_PACK", "--prices", SNAP],
       "price_source": "file", "needs": NEEDS, "note": "--sde does not change prices (docs/22 §2.4)"})
