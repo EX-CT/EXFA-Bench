@@ -269,7 +269,11 @@ def materialize_snapshot(path):
             import tempfile
             d["sde_build"] = dataset_build()
             d["content_hash"] = canonical_hash(d)
-            tmp = Path(tempfile.mkdtemp(prefix="bench-snap-")) / Path(path).name
+            # inside the bench tree, not the system temp dir: the wasm engine only sees preopened dirs ($PWD),
+            # so a /tmp copy would read as a missing file there
+            base = Path(__file__).resolve().parent / "_materialized"
+            base.mkdir(exist_ok=True)
+            tmp = Path(tempfile.mkdtemp(prefix="snap-", dir=base)) / Path(path).name
             tmp.write_text(json.dumps(d), encoding="utf-8")
             out = str(tmp)
     _MATERIALIZED[path] = out
