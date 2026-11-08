@@ -1,8 +1,8 @@
 {
  "schema": "no-regress/1",
- "note": "raised to Engine@6541c15 native gate run 37644950106 (ext_rpc 54/54: names.* via search aliases)",
+ "note": "raised to Engine v0.2.3 native gate on sde-3670638-r7 (ext 246/246: +7 unit_sel_* cases)",
  "created": "2026-10-03T14:07:47+0800",
- "updated": "2026-10-08T12:22:59+0800",
+ "updated": "2026-11-08T05:58:58-0800",
  "suites": {
   "core": {
    "passed": 339,
@@ -348,11 +348,11 @@
     "weather_infernal_hyperion",
     "weather_xenon_cerberus"
    ],
-   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
+   "ref": "54c67853830baffb082f9b71a92698e3d462ba0d"
   },
   "ext": {
-   "passed": 239,
-   "total": 239,
+   "passed": 246,
+   "total": 246,
    "passed_ids": [
     "alpha_drake",
     "alpha_kestrel",
@@ -569,6 +569,13 @@
     "unit_ovr_rifter_velocity_skills0",
     "unit_ovr_rifter_velocity_skills5",
     "unit_ovr_skill_attribute",
+    "unit_sel_drone",
+    "unit_sel_drone_none_baseline",
+    "unit_sel_empty",
+    "unit_sel_rep1",
+    "unit_sel_rep_both",
+    "unit_sel_rep_none_baseline",
+    "unit_sel_unmatched",
     "unit_val_max_type_fitted",
     "unit_val_validate_false",
     "val_capital_module_subcap",
@@ -594,7 +601,7 @@
     "val_slots_mid_low_rig",
     "val_turret_hardpoints"
    ],
-   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
+   "ref": "54c67853830baffb082f9b71a92698e3d462ba0d"
   },
   "ext_rpc": {
    "passed": 54,
@@ -655,7 +662,7 @@
     "var_large_shield_extender_ii",
     "var_medium_armor_repairer_i"
    ],
-   "ref": "c6b6b4f9825beefbe2361f3752b978155de39660"
+   "ref": "54c67853830baffb082f9b71a92698e3d462ba0d"
   },
   "effects": {
    "passed": 2378,
@@ -3040,7 +3047,7 @@
     "eff_998_eliteBonusGunshipProjectileFalloff2",
     "eff_999_eliteBonusGunshipShieldBoost2"
    ],
-   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
+   "ref": "54c67853830baffb082f9b71a92698e3d462ba0d"
   },
   "graphs": {
    "passed": 192,
@@ -3602,7 +3609,7 @@
     "variants_struct_1",
     "variants_struct_2"
    ],
-   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
+   "ref": "54c67853830baffb082f9b71a92698e3d462ba0d"
   },
   "sde": {
    "passed": 18,
@@ -3627,7 +3634,7 @@
     "version_rpc_equals_cli",
     "version_rpc_fields"
    ],
-   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
+   "ref": "54c67853830baffb082f9b71a92698e3d462ba0d"
   },
   "price_inject": {
    "passed": 32,
@@ -3666,7 +3673,7 @@
     "rpc_request_over_session",
     "rpc_session_isolated"
    ],
-   "ref": "a467d0a606b37a0f861b6d10da04669d2f42dd29"
+   "ref": "54c67853830baffb082f9b71a92698e3d462ba0d"
   }
  },
  "inventory": {
