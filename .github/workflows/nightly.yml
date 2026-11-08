@@ -17,7 +17,7 @@ on:
         description: 'EX-CT/EXFA-Engine ref to build'
         default: 'main'
       sde_tag:
-        description: 'EX-CT/EXFA-Data release with dataset-<build>-r<rev>.json.gz (pinned sde-3586130-r7)'
+        description: 'EX-CT/EXFA-Data release with dataset-<build>-r<rev>.json.gz (pinned sde-3586130-r7; the nightly schedule uses the latest sde-* release)'
         default: 'sde-3586130-r7'
       fuzz_seed:
         description: 'fuzz seed (default: run number)'
@@ -53,6 +53,14 @@ jobs:
       - run: pip install pyyaml
       - name: Dataset (${{ env.SDE_TAG }})
         run: |
+          # push/PR/dispatch stay on the pinned tag (reproducible); the nightly schedule is the canary and follows the
+          # newest EXFA-Data SDE, so a fixture that goes stale on a new build fails here the day it is released
+          # instead of blocking the engine's sde-update gate for weeks.
+          if [ "$GITHUB_EVENT_NAME" = schedule ]; then
+            SDE_TAG=$(gh release list -R EX-CT/EXFA-Data --json tagName --jq '[.[] | select(.tagName | startswith("sde-"))][0].tagName')
+            echo "nightly canary: latest EXFA-Data SDE release $SDE_TAG"
+            echo "SDE_TAG=$SDE_TAG" >> "$GITHUB_ENV"
+          fi
           gh release download "$SDE_TAG" -R EX-CT/EXFA-Data --pattern 'dataset-*.json.gz' -D _data
           echo "EXFA_DATASET=$(ls $PWD/_data/dataset-*.json.gz | head -1)" >> "$GITHUB_ENV"
       - name: d22 self-test (bench-side validators, no engine)
@@ -90,6 +98,14 @@ jobs:
           workspaces: _engine
       - name: Dataset (${{ env.SDE_TAG }})
         run: |
+          # push/PR/dispatch stay on the pinned tag (reproducible); the nightly schedule is the canary and follows the
+          # newest EXFA-Data SDE, so a fixture that goes stale on a new build fails here the day it is released
+          # instead of blocking the engine's sde-update gate for weeks.
+          if [ "$GITHUB_EVENT_NAME" = schedule ]; then
+            SDE_TAG=$(gh release list -R EX-CT/EXFA-Data --json tagName --jq '[.[] | select(.tagName | startswith("sde-"))][0].tagName')
+            echo "nightly canary: latest EXFA-Data SDE release $SDE_TAG"
+            echo "SDE_TAG=$SDE_TAG" >> "$GITHUB_ENV"
+          fi
           gh release download "$SDE_TAG" -R EX-CT/EXFA-Data --pattern 'dataset-*.json.gz' -D _data
           gh release download "$PRESETS_TAG" -R EX-CT/EXFA-Bench --pattern 'presets-pyfa-*.json' -D _data
           f=$(ls "$PWD"/_data/dataset-*.json.gz | head -1)

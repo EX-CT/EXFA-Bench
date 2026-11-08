@@ -195,7 +195,10 @@ def main():
     man = json.loads((SUITE / "MANIFEST.json").read_text())
     ids = a.cases or sorted(man)
     reqs = {c: json.loads((SUITE / "cases" / f"{c}.json").read_text()) for c in ids}
-    eargs = {c: [str(SUITE.parent / x) if x.startswith("batch/") else x for x in man[c].get("engine_args", [])] for c in ids}
+    def _earg(x):
+        # batch/ fixture paths -> absolute; --prices snapshot fixtures are re-stamped with the dataset's SDE build
+        return prices.materialize_snapshot(SUITE.parent / x) if x.startswith("batch/") and x.endswith(".json") else             (str(SUITE.parent / x) if x.startswith("batch/") else x)
+    eargs = {c: [_earg(x) for x in man[c].get("engine_args", [])] for c in ids}
     special = {c for c in ids if man[c]["kind"].startswith("calc_price") or semantics_error(reqs[c])}
     # one-by-one reference outputs (distinct fits computed once)
     todo = {}

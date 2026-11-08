@@ -284,8 +284,9 @@ def ck_inject(c, eng):
         files = [args[i + 1] for i, a in enumerate(args) if a == "--prices"]
         o = A.calc(eng, c["fit"], args)
         bad = check_price_out(o, c["fit"], files, c["price_source"], embedded=not files and use_snapshot(c["fit"]))
-        if c.get("warning") and not any(c["warning"] in w for w in A.warnings(o)):
-            bad.append(f"warning {c['warning']!r} not in {A.warnings(o)}")
+        want = c.get("warning", "").replace("{SDE_BUILD}", str(SDE_BUILD))   # fixtures do not pin the build number
+        if want and not any(want in w for w in A.warnings(o)):
+            bad.append(f"warning {want!r} not in {A.warnings(o)}")
         return bad
     if k == "inject_rpc":
         calls = [(m, dict(p, path=path(p["path"])) if m == "prices_load" and "path" in p else p) for m, p in c["calls"]]
