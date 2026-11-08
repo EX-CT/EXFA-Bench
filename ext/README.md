@@ -38,9 +38,8 @@ Large Remote Armor Repairer II (ids rep-a/rep-b) projected onto a bare Rifter at
 both / empty / an unmatched id (warning asserted at `/warnings/0`), and a Vexor variant proving a kind whose id list is
 absent projects nothing while `drone_ids` selects one of two maintenance bots. Hand-derived with the engine-verified
 numbers in each `derivation` (incoming RR is sub-additive per Pyfa's diminishing-returns formula, so 'one of two' is
-slightly more than half). The `exfa/compute@1` envelope (FitSpec shorthand normalization: default skill level 5,
-module state = active-if-activatable else online, `drones[].active` = quantity) is covered by exfa-core Rust tests
-(`crates/exfa-core/tests/compute.rs`), not a bench driver.
+slightly more than half). The engine has no input shorthand (the `exfa/compute@1` envelope was removed); `select`
+through `calc` is also covered by exfa-core Rust tests (`crates/exfa-core/tests/select.rs`).
 
 ```
 python3 ext/tools/gen_ext.py [POOL_LIST LEGAL_JSONL]   # cases except overrides
